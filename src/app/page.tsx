@@ -24,6 +24,7 @@ export default function Home() {
       <ValueProps />
       <ProductPreview />
       <MarketProof />
+      <Footer />
     </main>
   );
 }
@@ -31,8 +32,12 @@ export default function Home() {
 function Hero() {
   return (
     <section className="relative min-h-[92vh] bg-[#080a09] text-white">
-      <div className="absolute inset-0 bg-[url('/images/the-next-richers-page-concept.png')] bg-cover bg-center opacity-44" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,10,9,0.97)_0%,rgba(8,10,9,0.82)_38%,rgba(8,10,9,0.44)_72%,rgba(8,10,9,0.66)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#080a09_0%,#1a1f1d_35%,#2a322c_55%,#1a1f1d_75%,#080a09_100%)]" />
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute -left-[10%] -top-[10%] h-[60%] w-[60%] rounded-full bg-[#d8a24f]/10 blur-[120px]" />
+        <div className="absolute -bottom-[10%] -right-[10%] h-[50%] w-[50%] rounded-full bg-[#65b981]/8 blur-[100px]" />
+      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,10,9,0.92)_0%,rgba(8,10,9,0.72)_38%,rgba(8,10,9,0.44)_62%,rgba(8,10,9,0.66)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#080a09] to-transparent" />
 
       <header className="relative z-10 border-b border-white/10">
@@ -69,9 +74,9 @@ function Hero() {
             </button>
             <a
               className="rounded-[8px] bg-[#d8a24f] px-5 py-2.5 text-sm font-semibold text-[#111009] transition hover:bg-[#efbd6a]"
-              href="#product"
+              href="/app"
             >
-              제품 미리보기
+              앱 열기
             </a>
           </div>
           <button
@@ -88,7 +93,7 @@ function Hero() {
         <div className="max-w-3xl">
           <p className="mb-5 inline-flex items-center gap-2 rounded-[8px] border border-[#d8a24f]/42 bg-[#d8a24f]/10 px-3 py-2 text-xs font-semibold uppercase tracking-normal text-[#f0c77d]">
             <Database className="size-4" aria-hidden="true" />
-            Verified Wealth Stories
+            검증된 부의 성장 스토리
           </p>
           <h1 className="font-display text-5xl leading-[0.95] text-balance text-white sm:text-7xl lg:text-8xl">
             THE NEXT
@@ -102,9 +107,9 @@ function Hero() {
           <div className="mt-9 flex max-w-2xl flex-col gap-3 sm:flex-row">
             <a
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] bg-[#d9a557] px-5 text-sm font-semibold text-[#111009] transition hover:bg-[#efbd6a] focus:outline-none focus:ring-2 focus:ring-[#f0c77d] focus:ring-offset-2 focus:ring-offset-[#111411]"
-              href="#product"
+              href="/app"
             >
-              제품 미리보기
+              앱 열기
               <ArrowRight className="size-4" aria-hidden="true" />
             </a>
             <a
@@ -220,7 +225,7 @@ function ProductPreview() {
           <section className="border border-[#d8d0bf] bg-[#111411] p-5 text-white shadow-sm">
             <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <div>
-                <p className="text-sm font-semibold text-[#d8a24f]">People Explorer</p>
+                <p className="text-sm font-semibold text-[#d8a24f]">인물 탐색</p>
                 <h3 className="mt-1 text-2xl font-semibold">인물 탐색</h3>
               </div>
               <ChevronRight className="size-5 text-white/50" aria-hidden="true" />
@@ -277,7 +282,7 @@ function ProductPreview() {
 
         <div className="mt-5">
           <section className="border border-[#d8d0bf] bg-[#12382c] p-6 text-white">
-            <p className="text-sm font-semibold text-[#d8a24f]">Ranking Movement</p>
+            <p className="text-sm font-semibold text-[#d8a24f]">순위 변동</p>
             <h3 className="mt-2 text-2xl font-semibold">자산 변화는 학습의 실마리입니다.</h3>
             <div className="mt-8 space-y-4">
               {["기업 이벤트", "지분 가치", "산업 사이클", "환율·시장 변동"].map(
@@ -311,7 +316,7 @@ function MarketProof() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-normal text-[#3f6073]">
-              Verified Sources
+              검증 출처
             </p>
             <h2 className="mt-4 font-display text-4xl leading-tight text-balance sm:text-5xl">
               근거가 있는 인사이트만 오래 갑니다.
@@ -358,5 +363,119 @@ function MarketProof() {
         </p>
       </div>
     </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="border-t border-[#d8d0bf] bg-[#080a09] px-5 py-16 text-white lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
+          <div>
+            <a className="flex items-center gap-3" href="#" aria-label="THE NEXT RICHERS 홈">
+              <span className="grid size-11 place-items-center border border-[#d8a24f] text-sm font-semibold text-[#e7b864]">
+                TNR
+              </span>
+              <span className="font-display text-lg tracking-normal text-white">
+                THE NEXT RICHERS
+              </span>
+            </a>
+            <p className="mt-6 max-w-xs text-sm leading-6 text-white/56">
+              Forbes TOP 100 부자들의 성장 과정, 사업 전략, 자산 형성 구조를
+              배우는 글로벌 비즈니스 인사이트 플랫폼.
+            </p>
+            <div className="mt-6 flex items-center gap-4">
+              {/* Twitter/X */}
+              <a href="#" className="text-white/46 transition hover:text-[#d8a24f]" aria-label="Twitter">
+                <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path d="M4.5 4.5l5.5 7.5-5.5 7.5h2l4-5.5 4 5.5h5l-5.5-7.5 5.5-7.5h-2l-4 5.5-4-5.5h-5z" />
+                </svg>
+              </a>
+              {/* YouTube */}
+              <a href="#" className="text-white/46 transition hover:text-[#d8a24f]" aria-label="YouTube">
+                <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path d="M21.543 6.498A2.5 2.5 0 0019.5 4.5C17.5 4 12 4 12 4s-5.5 0-7.5.5A2.5 2.5 0 002.45 6.5 26.6 26.6 0 002 12c0 1.98.16 3.96.45 5.5A2.5 2.5 0 004.5 19.5c2 .5 7.5.5 7.5.5s5.5 0 7.5-.5a2.5 2.5 0 002.043-2.002A26.6 26.6 0 0022 12a26.6 26.6 0 00-.457-5.502z" />
+                  <path d="M10 15.5v-7l5.5 3.5-5.5 3.5z" />
+                </svg>
+              </a>
+              {/* Instagram */}
+              <a href="#" className="text-white/46 transition hover:text-[#d8a24f]" aria-label="Instagram">
+                <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="5" />
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              {/* LinkedIn */}
+              <a href="#" className="text-white/46 transition hover:text-[#d8a24f]" aria-label="LinkedIn">
+                <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <rect x="2" y="2" width="20" height="20" rx="2" ry="2" />
+                  <path d="M7 10v7M7 7v0M11 13v4M11 13a4 4 0 018 0v4" strokeLinecap="round" />
+                </svg>
+              </a>
+              {/* GitHub */}
+              <a href="#" className="text-white/46 transition hover:text-[#d8a24f]" aria-label="GitHub">
+                <svg className="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.25}>
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.48 0-.236-.009-.864-.013-1.695-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-[#d8a24f]">서비스</h4>
+            <ul className="mt-5 space-y-3">
+              {["인물 탐색", "순위 보기", "전략 타임라인", "시장 인사이트"].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-white/56 transition hover:text-white">{item}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-[#d8a24f]">리소스</h4>
+            <ul className="mt-5 space-y-3">
+              {["출처 기준", "이용약관", "개인정보처리방침", "문의하기"].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-white/56 transition hover:text-white">{item}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-[#d8a24f]">뉴스레터</h4>
+            <p className="mt-5 text-sm leading-6 text-white/56">
+              TOP 100 부자들의 최신 순위 변동과 인사이트를 이메일로 받아보세요.
+            </p>
+            <form className="mt-4 flex gap-2" action="#">
+              <input
+                type="email"
+                placeholder="이메일 주소"
+                className="min-h-10 flex-1 rounded-[8px] border border-white/18 bg-white/8 px-3 text-sm text-white placeholder-white/36 outline-none focus:border-[#d8a24f]/60"
+              />
+              <button
+                type="submit"
+                className="rounded-[8px] bg-[#d8a24f] px-4 text-sm font-semibold text-[#111009] transition hover:bg-[#efbd6a]"
+              >
+                구독
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-sm text-white/40">
+              &copy; {new Date().getFullYear()} THE NEXT RICHERS. All rights reserved.
+            </p>
+            <p className="text-xs text-white/30">
+              순자산은 Forbes, Bloomberg 등 외부 기관의 추정치를 기반으로 합니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
