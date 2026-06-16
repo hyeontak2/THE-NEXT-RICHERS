@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="THE NEXT RICHERS app icon">
+  <rect width="512" height="512" rx="96" fill="#0a0d0b"/>
+  <rect x="56" y="56" width="400" height="400" rx="72" fill="#111813" stroke="#d8a24f" stroke-width="12"/>
+  <path d="M142 344V168h42l72 108 72-108h42v176h-43V239l-56 84h-30l-56-84v105h-43Z" fill="#fffaf0"/>
+  <path d="M142 384h228" stroke="#d8a24f" stroke-width="18" stroke-linecap="round"/>
+</svg>

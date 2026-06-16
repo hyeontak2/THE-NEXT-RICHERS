@@ -1,0 +1,19 @@
+{
+  "name": "THE NEXT RICHERS",
+  "short_name": "TNR",
+  "description": "글로벌 부자 랭킹, 성장 전략, 자산 형성 구조를 탐색하는 인사이트 앱.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0d0b",
+  "theme_color": "#0a0d0b",
+  "icons": [
+    {
+      "src": "/icons/tnr-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
