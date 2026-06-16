@@ -54,3 +54,87 @@ nextjs-portal {
 .text-pretty {
   text-wrap: pretty;
 }
+
+[data-tnr-theme="light"] {
+  color: #111411;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 246, 241, 0.98)),
+    #f7f6f1;
+}
+
+[data-tnr-theme="light"] .bg-\[\#0a0d0b\],
+[data-tnr-theme="light"] .bg-\[\#101612\],
+[data-tnr-theme="light"] .bg-black\/12 {
+  background-color: #ffffff !important;
+}
+
+[data-tnr-theme="light"] .bg-\[\#0d1310\],
+[data-tnr-theme="light"] .bg-white\/\[0\.03\],
+[data-tnr-theme="light"] .bg-white\/\[0\.04\] {
+  background-color: #f4f1e9 !important;
+}
+
+[data-tnr-theme="light"] .bg-\[\#12382c\] {
+  background-color: #f2eadc !important;
+  color: #12382c !important;
+}
+
+[data-tnr-theme="light"] .border-white\/10,
+[data-tnr-theme="light"] .border-white\/12,
+[data-tnr-theme="light"] .border-white\/14 {
+  border-color: #e2ded2 !important;
+}
+
+[data-tnr-theme="light"] .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2ded2 !important;
+}
+
+[data-tnr-theme="light"] .text-white {
+  color: #111411 !important;
+}
+
+[data-tnr-theme="light"] .text-white\/82,
+[data-tnr-theme="light"] .text-white\/76,
+[data-tnr-theme="light"] .text-white\/74,
+[data-tnr-theme="light"] .text-white\/72,
+[data-tnr-theme="light"] .text-white\/70,
+[data-tnr-theme="light"] .text-white\/68,
+[data-tnr-theme="light"] .text-white\/66,
+[data-tnr-theme="light"] .text-white\/64,
+[data-tnr-theme="light"] .text-white\/62,
+[data-tnr-theme="light"] .text-white\/58,
+[data-tnr-theme="light"] .text-white\/56,
+[data-tnr-theme="light"] .text-white\/54,
+[data-tnr-theme="light"] .text-white\/50,
+[data-tnr-theme="light"] .text-white\/48,
+[data-tnr-theme="light"] .text-white\/45,
+[data-tnr-theme="light"] .text-white\/44,
+[data-tnr-theme="light"] .text-white\/42,
+[data-tnr-theme="light"] .text-white\/38,
+[data-tnr-theme="light"] .text-white\/34,
+[data-tnr-theme="light"] .text-white\/22 {
+  color: #5d625b !important;
+}
+
+[data-tnr-theme="light"] .text-\[\#d8a24f\],
+[data-tnr-theme="light"] .text-\[\#e8bd70\],
+[data-tnr-theme="light"] .text-\[\#e7b864\] {
+  color: #9a6a20 !important;
+}
+
+[data-tnr-theme="light"] input,
+[data-tnr-theme="light"] select {
+  color: #111411 !important;
+}
+
+[data-tnr-theme="light"] input::placeholder {
+  color: #8c9087 !important;
+}
+
+[data-tnr-theme="light"] table {
+  background: #ffffff;
+}
+
+[data-tnr-theme="light"] tr:hover {
+  background-color: #f7f4ee !important;
+}
