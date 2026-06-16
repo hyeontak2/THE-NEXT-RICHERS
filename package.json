@@ -4,11 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:gateway": "node scripts/dev-with-message-gateway.mjs",
+    "gateway:telegram": "node scripts/telegram-message-gateway.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "cap:sync": "cap sync android",
+    "apk:debug": "npm run build && cap sync android && cd android && gradlew assembleDebug"
   },
   "dependencies": {
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^8.4.0",
+    "@capacitor/core": "^8.4.0",
     "lucide-react": "^1.17.0",
     "next": "^16.2.7",
     "react": "^19.2.7",
