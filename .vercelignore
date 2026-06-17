@@ -1,0 +1,9 @@
+.tooling
+.next
+node_modules
+android
+dist
+out
+*.log
+*.apk
+public/downloads/*.apk
