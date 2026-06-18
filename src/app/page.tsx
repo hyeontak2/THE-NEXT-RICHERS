@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowRight,
   ChevronRight,
@@ -73,12 +72,12 @@ function Hero() {
               <Globe2 className="size-4" aria-hidden="true" />
               KO
             </button>
-            <Link
+            <a
               className="rounded-[8px] bg-[#d8a24f] px-5 py-2.5 text-sm font-semibold text-[#111009] transition hover:bg-[#efbd6a]"
-              href="/app"
+              href="/THE-NEXT-RICHERS/app/"
             >
               앱 열기
-            </Link>
+            </a>
           </div>
           <button
             className="grid size-10 place-items-center rounded-[8px] border border-white/14 text-white lg:hidden"
@@ -106,13 +105,13 @@ function Hero() {
             인사이트 플랫폼.
           </p>
           <div className="mt-9 flex max-w-2xl flex-col gap-3 sm:flex-row">
-            <Link
+            <a
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] bg-[#d9a557] px-5 text-sm font-semibold text-[#111009] transition hover:bg-[#efbd6a] focus:outline-none focus:ring-2 focus:ring-[#f0c77d] focus:ring-offset-2 focus:ring-offset-[#111411]"
-              href="/app"
+              href="/THE-NEXT-RICHERS/app/"
             >
               앱 열기
               <ArrowRight className="size-4" aria-hidden="true" />
-            </Link>
+            </a>
             <a
               className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-white/18 bg-white/10 px-5 text-sm font-semibold text-white transition hover:border-white/36 hover:bg-white/14 focus:outline-none focus:ring-2 focus:ring-white/36 focus:ring-offset-2 focus:ring-offset-[#111411]"
               href="#sources"
