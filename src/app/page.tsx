@@ -17,6 +17,16 @@ import {
 
 const navItems = ["성장 스토리", "전략 타임라인", "검증 출처", "자산 흐름"];
 
+function getResourceLink(label: string) {
+  const map: Record<string, string> = {
+    "출처 기준": "/app/sources",
+    "이용약관": "/terms",
+    "개인정보처리방침": "/privacy",
+    "문의하기": "/contact",
+  };
+  return map[label] || "#";
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#f5f1e8] text-[#111411]">
@@ -120,7 +130,7 @@ function Hero() {
             </a>
           </div>
           <div className="mt-8 grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
-            {["Forbes", "Bloomberg", "공식 자료", "공시 기반"].map((item) => (
+            {["글로벌 금융 정보", "Bloomberg", "공식 자료", "공시 기반"].map((item) => (
               <div
                 key={item}
                 className="border-l border-[#d8a24f]/46 px-3 py-2 text-sm text-white/74"
@@ -381,7 +391,7 @@ function Footer() {
               </span>
             </a>
             <p className="mt-6 max-w-xs text-sm leading-6 text-white/56">
-              Forbes TOP 100 부자들의 성장 과정, 사업 전략, 자산 형성 구조를
+              글로벌 TOP 100 부자들의 성장 과정, 사업 전략, 자산 형성 구조를
               배우는 글로벌 비즈니스 인사이트 플랫폼.
             </p>
             <div className="mt-6 flex items-center gap-4">
@@ -438,7 +448,7 @@ function Footer() {
             <ul className="mt-5 space-y-3">
               {["출처 기준", "이용약관", "개인정보처리방침", "문의하기"].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-sm text-white/56 transition hover:text-white">{item}</a>
+                  <a href={getResourceLink(item)} className="text-sm text-white/56 transition hover:text-white">{item}</a>
                 </li>
               ))}
             </ul>
@@ -471,7 +481,7 @@ function Footer() {
               &copy; {new Date().getFullYear()} THE NEXT RICHERS. All rights reserved.
             </p>
             <p className="text-xs text-white/30">
-              순자산은 Forbes, Bloomberg 등 외부 기관의 추정치를 기반으로 합니다.
+              순자산은 글로벌 금융 기관의 공개 추정치를 기반으로 합니다.
             </p>
           </div>
         </div>

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   applicationName: "THE NEXT RICHERS",
   title: "THE NEXT RICHERS | 글로벌 부자 인사이트 플랫폼",
   description:
-    "Forbes, Bloomberg, 기업 공식 자료와 공시를 바탕으로 글로벌 부자들의 성장 과정, 사업 전략, 자산 형성 구조를 학습 가능한 콘텐츠로 제공하는 플랫폼입니다.",
+    "기업 공식 자료와 공시, 글로벌 금융 정보를 바탕으로 글로벌 부자들의 성장 과정, 사업 전략, 자산 형성 구조를 학습 가능한 콘텐츠로 제공하는 플랫폼입니다.",
   metadataBase: new URL("https://the-next-richers.vercel.app"),
   manifest: "/manifest.webmanifest",
   appleWebApp: {

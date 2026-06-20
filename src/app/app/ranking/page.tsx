@@ -10,7 +10,7 @@ import {
   getTopRicherCompanyLabel,
   getTopRicherCountryLabel,
   getTopRicherDisplayName,
-  getTopRicherForbesRankLabel,
+  getTopRicherGlobalRankLabel,
   getTopRicherListRankLabel,
   getTopRicherNetWorthLabel,
   getTopRicherProfileHref,
@@ -200,7 +200,7 @@ function TopRicherRow({
     <tr className="bg-[#101612] text-sm transition hover:bg-white/[0.06]">
       <td className="px-4 py-3 text-white/42">{position}</td>
       <td className="px-4 py-3 font-semibold text-[#e8bd70]">
-        {getTopRicherForbesRankLabel(person.rank, locale)}
+        {getTopRicherGlobalRankLabel(person.rank, locale)}
       </td>
       <td className="px-4 py-3">
         <div className="flex items-center gap-3">

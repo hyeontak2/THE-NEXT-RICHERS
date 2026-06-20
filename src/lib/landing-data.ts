@@ -62,7 +62,7 @@ export const features: Feature[] = [
   {
     title: "검증 출처",
     description:
-      "Forbes, Bloomberg, 기업 공식 자료, 공시, 주요 언론을 함께 표기해 신뢰도를 분리합니다.",
+      "글로벌 금융 정보, Bloomberg, 기업 공식 자료, 공시, 주요 언론을 함께 표기해 신뢰도를 분리합니다.",
     icon: ShieldCheck,
   },
   {
@@ -141,7 +141,7 @@ export const profilePreviews: ProfilePreview[] = [
 
 export const sources: Source[] = [
   {
-    name: "Forbes World’s Billionaires",
+    name: "Global Billionaires Ranking",
     detail: "글로벌 억만장자 순위와 추정 순자산의 기준점",
     strength: "데이터",
   },
@@ -165,12 +165,12 @@ export const sources: Source[] = [
 export const proofStats = [
   {
     value: "3,428명",
-    label: "Forbes 2026 글로벌 억만장자",
+    label: "2026 글로벌 억만장자",
     icon: Globe2,
   },
   {
     value: "$20.1T",
-    label: "Forbes 집계 총자산 규모",
+    label: "글로벌 집계 총자산 규모",
     icon: LineChart,
   },
   {

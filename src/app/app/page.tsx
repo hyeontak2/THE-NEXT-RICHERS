@@ -10,7 +10,7 @@ import {
   getTopRicherCompanyLabel,
   getTopRicherCountryLabel,
   getTopRicherDisplayName,
-  getTopRicherForbesRankLabel,
+  getTopRicherGlobalRankLabel,
   getTopRicherNetWorthLabel,
   topRicherImages,
   topRichers,
@@ -48,7 +48,7 @@ function CoreAppIllustration() {
   const image = topRicherImages[topRicher.name];
   const displayName = getTopRicherDisplayName(topRicher, locale);
   const companyLabel = getTopRicherCompanyLabel(topRicher, locale);
-  const rankLabel = getTopRicherForbesRankLabel(topRicher.rank, locale);
+  const rankLabel = getTopRicherGlobalRankLabel(topRicher.rank, locale);
   const categoryLabel = t(
     `category.${topRicher.category}`,
     getTopRicherCategoryLabel(topRicher.category, locale),

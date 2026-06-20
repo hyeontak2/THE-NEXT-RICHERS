@@ -79,7 +79,7 @@ function getSourceDescription(grade: string) {
     case "primary":
       return "기업 공식 자료, 연차보고서, 공시처럼 사실 확인의 기준이 되는 자료입니다.";
     case "index":
-      return "포브스, 블룸버그처럼 순위와 순자산 추정치를 비교하는 외부 데이터입니다.";
+      return "글로벌 금융 정보 기관의 순위와 순자산 추정치를 비교하는 외부 데이터입니다.";
     case "media":
       return "인수, 경영 의사결정, 시장 반응의 맥락을 보완하는 주요 언론 자료입니다.";
     default:

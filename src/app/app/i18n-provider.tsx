@@ -54,7 +54,7 @@ const dictionary: Record<Locale, Record<string, string>> = {
     "nav.sources": "출처",
     "mobile.nav": "모바일 앱 내비게이션",
     "common.no": "앱 순번",
-    "common.forbesRank": "포브스 순위",
+    "common.forbesRank": "글로벌 순위",
     "common.name": "이름",
     "common.company": "대표 기업",
     "common.netWorth": "순자산",
@@ -73,23 +73,23 @@ const dictionary: Record<Locale, Record<string, string>> = {
     "ranking.eyebrow": "상위 100명 순위",
     "ranking.title": "1위부터 100위까지 순위를 따로 봅니다.",
     "ranking.description":
-      "동률은 포브스 순위를 그대로 보존하고, 앱 순번은 화면에서 확인하는 100개 행 기준입니다. 기준일은 {date}입니다.",
+      "동률은 글로벌 순위를 그대로 보존하고, 앱 순번은 화면에서 확인하는 100개 행 기준입니다. 기준일은 {date}입니다.",
     "ranking.sectionTitle":
       "인물별 순자산과 산업 분류를 한 화면에서 비교합니다.",
     "ranking.sectionDescription":
       "공개 사진이 확인된 인물은 위키미디어 썸네일을 쓰고, 없는 인물은 TNR 슬롯으로 표시합니다. 순자산은 외부 추정치이므로 투자 판단이 아닌 학습용 맥락으로 봅니다.",
-    "ranking.forbesSource": "포브스 출처",
+    "ranking.forbesSource": "글로벌 출처",
     "home.eyebrow": "어플리케이션 소개",
     "home.title": "THE NEXT RICHERS 앱 한눈에 보기",
     "home.description":
       "글로벌 부자 TOP 100의 순위, 인물 프로필, 시장 시나리오, 출처 검증을 빠르게 탐색하는 리서치 앱입니다.",
     "home.rankExampleEyebrow": "랭킹 1위 예시",
     "home.rankExampleTitle": "{name}의 순위에서 성장 스토리까지 봅니다.",
-    "home.forbesRankOne": "Forbes 기준 {rank}",
+    "home.forbesRankOne": "글로벌 기준 {rank}",
     "home.metricRank": "순위",
     "home.metricRankNote": "글로벌 TOP 100",
     "home.metricNetWorth": "추정 순자산",
-    "home.metricNetWorthNote": "Forbes 기준",
+    "home.metricNetWorthNote": "글로벌 금융 정보 기준",
     "home.metricAxis": "대표 축",
     "home.metricAxisValue": "기술 · AI",
     "market.eyebrow": "시장 시나리오",
@@ -104,7 +104,7 @@ const dictionary: Record<Locale, Record<string, string>> = {
     "sources.eyebrow": "출처 레이어",
     "sources.title": "출처는 종류별로 분리해서 봅니다.",
     "sources.description":
-      "포브스, 공식 자료, 공시, 신뢰도 높은 언론, 시장 보고서를 서로 다른 신뢰도 레이어로 나눕니다.",
+      "글로벌 금융 정보, 공식 자료, 공시, 신뢰도 높은 언론, 시장 보고서를 서로 다른 신뢰도 레이어로 나눕니다.",
     "mobile.eyebrow": "모바일 앱",
     "mobile.title": "작은 화면에서는 핵심 정보가 한 손 안에 들어오게 보여줍니다.",
     "mobile.description":
@@ -178,7 +178,7 @@ const dictionary: Record<Locale, Record<string, string>> = {
     "nav.sources": "Sources",
     "mobile.nav": "Mobile app navigation",
     "common.no": "No.",
-    "common.forbesRank": "Forbes rank",
+    "common.forbesRank": "Global rank",
     "common.name": "Name",
     "common.company": "Primary company",
     "common.netWorth": "Net worth",
@@ -197,23 +197,23 @@ const dictionary: Record<Locale, Record<string, string>> = {
     "ranking.eyebrow": "Top 100 ranking",
     "ranking.title": "Browse ranks 1 through 100 separately.",
     "ranking.description":
-      "Ties preserve the Forbes rank, while No. refers to the 100 rows shown in the app. Information date: {date}.",
+      "Ties preserve the global rank, while No. refers to the 100 rows shown in the app. Information date: {date}.",
     "ranking.sectionTitle":
       "Compare net worth and industry classification in one view.",
     "ranking.sectionDescription":
       "People with verified public photos use Wikimedia thumbnails; others use TNR slots. Net worth is an external estimate and should be read as learning context, not investment advice.",
-    "ranking.forbesSource": "Forbes source",
+    "ranking.forbesSource": "Global source",
     "home.eyebrow": "Application overview",
     "home.title": "THE NEXT RICHERS app at a glance",
     "home.description":
       "A research app for exploring the global billionaire TOP 100, profiles, market scenarios, and source checks.",
     "home.rankExampleEyebrow": "Rank #1 example",
     "home.rankExampleTitle": "See {name}'s path from ranking to growth story.",
-    "home.forbesRankOne": "Forbes {rank}",
+    "home.forbesRankOne": "Global ranking {rank}",
     "home.metricRank": "Rank",
     "home.metricRankNote": "Global TOP 100",
     "home.metricNetWorth": "Estimated net worth",
-    "home.metricNetWorthNote": "Forbes basis",
+    "home.metricNetWorthNote": "Global financial data",
     "home.metricAxis": "Core axis",
     "home.metricAxisValue": "Technology · AI",
     "market.eyebrow": "Market scenario",
@@ -228,7 +228,7 @@ const dictionary: Record<Locale, Record<string, string>> = {
     "sources.eyebrow": "Source layers",
     "sources.title": "Review sources by type.",
     "sources.description":
-      "Forbes, official materials, filings, trusted media, and market reports are separated into different reliability layers.",
+      "Global financial data, official corporate filings, trusted media, and market reports into separate credibility layers.",
     "mobile.eyebrow": "Mobile app",
     "mobile.title": "On small screens, key information fits in one hand.",
     "mobile.description":

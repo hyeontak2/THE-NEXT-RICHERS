@@ -9,7 +9,7 @@ import {
   getTopRicherCompanyLabel,
   getTopRicherDisplayName,
   getTopRicherDeltaNetWorthLabel,
-  getTopRicherForbesRankLabel,
+  getTopRicherGlobalRankLabel,
   getTopRicherNetWorthLabel,
   getTopRicherProfileHref,
   getTopRicherScenarioRankLabel,
@@ -191,7 +191,7 @@ export function MarketScenarioPanel() {
               주가 변동에 따른 예상 순위 변동을 반영합니다.
             </h2>
             <p className="mt-3 text-sm leading-6 text-white/58">
-              포브스 기준 순자산에 섹터별 주가 변동률과 자산 민감도를 곱해 시나리오 순위를
+              글로벌 금융 정보 기준 순자산에 섹터별 주가 변동률과 자산 민감도를 곱해 시나리오 순위를
               다시 계산합니다. 실제 실시간 자산가 순위가 아니라 학습용 추정 모델입니다.
             </p>
           </div>
@@ -403,7 +403,7 @@ function ScenarioRow({ person }: { person: ScenarioPerson }) {
               {getTopRicherCompanyLabel(person, locale)}
             </p>
             <p className="text-xs text-white/38">
-              Forbes {getTopRicherForbesRankLabel(person.rank, locale)}
+              글로벌 {getTopRicherGlobalRankLabel(person.rank, locale)}
             </p>
           </div>
         </div>
@@ -452,7 +452,7 @@ function ScenarioCard({ person }: { person: ScenarioPerson }) {
         <p className="mt-2 text-xs text-white/54">
           {t("market.expected", "예상")} {getTopRicherNetWorthLabel({
             netWorthBillion: person.adjustedNetWorthBillion,
-          }, locale)} · Forbes {getTopRicherForbesRankLabel(person.rank, locale)}
+          }, locale)} · 글로벌 {getTopRicherGlobalRankLabel(person.rank, locale)}
         </p>
         <Link
           className="mt-3 inline-flex min-h-8 items-center gap-1.5 rounded-[8px] bg-white px-2.5 text-xs font-semibold text-[#111411]"

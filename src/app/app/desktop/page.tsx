@@ -8,7 +8,7 @@ import {
   getTopRicherCompanyLabel,
   getTopRicherCountryLabel,
   getTopRicherDisplayName,
-  getTopRicherForbesRankLabel,
+  getTopRicherGlobalRankLabel,
   getTopRicherNetWorthLabel,
   getTopRicherProfileHref,
   topRicherCategories,
@@ -107,7 +107,7 @@ function DesktopDashboard() {
                   <thead className="bg-[#f4f1e9] text-xs uppercase tracking-normal text-[#73786f]">
                     <tr>
                       <th className="px-4 py-3 font-semibold">
-                        {t("common.forbesRank", "포브스 순위")}
+                        {t("common.forbesRank", "글로벌 순위")}
                       </th>
                       <th className="px-4 py-3 font-semibold">
                         {t("common.name", "인물")}
@@ -133,7 +133,7 @@ function DesktopDashboard() {
                     {topTen.map((person) => (
                       <tr key={person.name} className="text-sm transition hover:bg-[#f8f4ec]">
                         <td className="px-4 py-3 font-semibold text-[#9a6a20]">
-                          {getTopRicherForbesRankLabel(person.rank, locale)}
+                          {getTopRicherGlobalRankLabel(person.rank, locale)}
                         </td>
                         <td className="px-4 py-3 font-semibold text-[#111411]">
                           {getTopRicherDisplayName(person, locale)}

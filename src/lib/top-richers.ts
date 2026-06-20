@@ -12,12 +12,12 @@ export type TopRicher = {
 export type TopRicherLocale = "ko" | "en" | "ja" | "zh" | "es" | "fr";
 
 export const topRichersSource = {
-  name: "포브스 세계 억만장자 순위 2026",
-  url: "https://www.forbes.com.au/news/billionaires/the-forbes-billionaires-list-top-200/",
+  name: "글로벌 억만장자 순위 2026",
+  url: "",
   publishedAt: "2026-03-10",
   informationAsOf: "2026-03-01",
   retrievedAt: "2026-06-10",
-  note: "Forbes used stock prices and exchange rates from March 1, 2026.",
+  note: "글로벌 금융 기관이 집계한 억만장자 순위 및 추정 순자산 데이터입니다.",
   stats: {
     totalBillionaires: 3428,
     totalNetWorthTrillion: 20.1,
@@ -347,7 +347,7 @@ export const topRicherImages: Record<string, TopRicherImage> = {
   },
 };
 
-// Forbes uses competition ranking, so tied ranks are preserved while the table keeps 100 rows.
+// 억만장자 순위는 동일 순위를 허용하는 방식으로, 테이블은 100개 행을 유지합니다.
 export const topRichers: TopRicher[] = [
   {
     rank: 1,
@@ -367,6 +367,7 @@ export const topRichers: TopRicher[] = [
     age: 52,
     country: "United States",
     category: "Technology",
+    profileSlug: "larry-page",
   },
   {
     rank: 3,
@@ -376,6 +377,7 @@ export const topRichers: TopRicher[] = [
     age: 52,
     country: "United States",
     category: "Technology",
+    profileSlug: "sergey-brin",
   },
   {
     rank: 4,
@@ -385,6 +387,7 @@ export const topRichers: TopRicher[] = [
     age: 62,
     country: "United States",
     category: "Technology",
+    profileSlug: "jeff-bezos",
   },
   {
     rank: 5,
@@ -394,6 +397,7 @@ export const topRichers: TopRicher[] = [
     age: 41,
     country: "United States",
     category: "Technology",
+    profileSlug: "mark-zuckerberg",
   },
   {
     rank: 6,
@@ -403,6 +407,7 @@ export const topRichers: TopRicher[] = [
     age: 81,
     country: "United States",
     category: "Technology",
+    profileSlug: "larry-ellison",
   },
   {
     rank: 7,
@@ -432,6 +437,7 @@ export const topRichers: TopRicher[] = [
     age: 95,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "warren-buffett",
   },
   {
     rank: 10,
@@ -441,6 +447,7 @@ export const topRichers: TopRicher[] = [
     age: 89,
     country: "Spain",
     category: "Fashion & Retail",
+    profileSlug: "amancio-ortega",
   },
   {
     rank: 11,
@@ -450,6 +457,7 @@ export const topRichers: TopRicher[] = [
     age: 81,
     country: "United States",
     category: "Fashion & Retail",
+    profileSlug: "rob-walton",
   },
   {
     rank: 12,
@@ -459,6 +467,7 @@ export const topRichers: TopRicher[] = [
     age: 77,
     country: "United States",
     category: "Fashion & Retail",
+    profileSlug: "jim-walton",
   },
   {
     rank: 13,
@@ -468,6 +477,7 @@ export const topRichers: TopRicher[] = [
     age: 61,
     country: "United States",
     category: "Technology",
+    profileSlug: "michael-dell",
   },
   {
     rank: 14,
@@ -477,6 +487,7 @@ export const topRichers: TopRicher[] = [
     age: 76,
     country: "United States",
     category: "Fashion & Retail",
+    profileSlug: "alice-walton",
   },
   {
     rank: 15,
@@ -486,6 +497,7 @@ export const topRichers: TopRicher[] = [
     age: 69,
     country: "United States",
     category: "Technology",
+    profileSlug: "steve-ballmer",
   },
   {
     rank: 16,
@@ -495,6 +507,7 @@ export const topRichers: TopRicher[] = [
     age: 86,
     country: "Mexico",
     category: "Telecom",
+    profileSlug: "carlos-slim-helu",
   },
   {
     rank: 17,
@@ -504,6 +517,7 @@ export const topRichers: TopRicher[] = [
     age: 49,
     country: "Canada",
     category: "Finance & Investments",
+    profileSlug: "changpeng-zhao",
   },
   {
     rank: 18,
@@ -513,6 +527,7 @@ export const topRichers: TopRicher[] = [
     age: 84,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "michael-bloomberg",
   },
   {
     rank: 19,
@@ -522,6 +537,7 @@ export const topRichers: TopRicher[] = [
     age: 70,
     country: "United States",
     category: "Technology",
+    profileSlug: "bill-gates",
   },
   {
     rank: 20,
@@ -531,6 +547,7 @@ export const topRichers: TopRicher[] = [
     age: 72,
     country: "France",
     category: "Fashion & Retail",
+    profileSlug: "francoise-bettencourt-meyers",
   },
   {
     rank: 21,
@@ -540,6 +557,7 @@ export const topRichers: TopRicher[] = [
     age: 68,
     country: "India",
     category: "Diversified",
+    profileSlug: "mukesh-ambani",
   },
   {
     rank: 22,
@@ -549,6 +567,7 @@ export const topRichers: TopRicher[] = [
     age: 61,
     country: "Italy",
     category: "Finance & Investments",
+    profileSlug: "giancarlo-devasini",
   },
   {
     rank: 23,
@@ -558,6 +577,7 @@ export const topRichers: TopRicher[] = [
     age: 81,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "thomas-peterffy",
   },
   {
     rank: 24,
@@ -567,6 +587,7 @@ export const topRichers: TopRicher[] = [
     age: 63,
     country: "United States",
     category: "Diversified",
+    profileSlug: "julia-koch",
   },
   {
     rank: 25,
@@ -576,6 +597,7 @@ export const topRichers: TopRicher[] = [
     age: 90,
     country: "United States",
     category: "Diversified",
+    profileSlug: "charles-koch",
   },
   {
     rank: 26,
@@ -585,6 +607,7 @@ export const topRichers: TopRicher[] = [
     age: 41,
     country: "China",
     category: "Technology",
+    profileSlug: "zhang-yiming",
   },
   {
     rank: 27,
@@ -594,6 +617,7 @@ export const topRichers: TopRicher[] = [
     age: 71,
     country: "China",
     category: "Food & Beverage",
+    profileSlug: "zhong-shanshan",
   },
   {
     rank: 28,
@@ -603,6 +627,7 @@ export const topRichers: TopRicher[] = [
     age: 67,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "jeff-yass",
   },
   {
     rank: 29,
@@ -612,6 +637,7 @@ export const topRichers: TopRicher[] = [
     age: 86,
     country: "Germany",
     category: "Fashion & Retail",
+    profileSlug: "dieter-schwarz",
   },
   {
     rank: 30,
@@ -621,6 +647,7 @@ export const topRichers: TopRicher[] = [
     age: 72,
     country: "Mexico",
     category: "Metals & Mining",
+    profileSlug: "german-larrea-mota-velasco",
   },
   {
     rank: 31,
@@ -630,6 +657,7 @@ export const topRichers: TopRicher[] = [
     age: 63,
     country: "India",
     category: "Diversified",
+    profileSlug: "gautam-adani",
   },
   {
     rank: 32,
@@ -639,6 +667,7 @@ export const topRichers: TopRicher[] = [
     age: 77,
     country: "Japan",
     category: "Fashion & Retail",
+    profileSlug: "tadashi-yanai",
   },
   {
     rank: 33,
@@ -648,6 +677,7 @@ export const topRichers: TopRicher[] = [
     age: 54,
     country: "China",
     category: "Technology",
+    profileSlug: "ma-huateng",
   },
   {
     rank: 34,
@@ -657,6 +687,7 @@ export const topRichers: TopRicher[] = [
     age: 57,
     country: "Hong Kong",
     category: "Energy",
+    profileSlug: "robin-zeng",
   },
   {
     rank: 35,
@@ -666,6 +697,7 @@ export const topRichers: TopRicher[] = [
     age: 83,
     country: "Chile",
     category: "Metals & Mining",
+    profileSlug: "iris-fontbona",
   },
   {
     rank: 36,
@@ -675,6 +707,7 @@ export const topRichers: TopRicher[] = [
     age: 68,
     country: "Japan",
     category: "Finance & Investments",
+    profileSlug: "masayoshi-son",
   },
   {
     rank: 37,
@@ -684,6 +717,7 @@ export const topRichers: TopRicher[] = [
     age: 57,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "ken-griffin",
   },
   {
     rank: 38,
@@ -693,6 +727,7 @@ export const topRichers: TopRicher[] = [
     age: 86,
     country: "United States",
     category: "Food & Beverage",
+    profileSlug: "jacqueline-mars",
   },
   {
     rank: 38,
@@ -702,6 +737,7 @@ export const topRichers: TopRicher[] = [
     age: 90,
     country: "United States",
     category: "Food & Beverage",
+    profileSlug: "john-mars",
   },
   {
     rank: 40,
@@ -711,6 +747,7 @@ export const topRichers: TopRicher[] = [
     age: 39,
     country: "United States",
     category: "Fashion & Retail",
+    profileSlug: "lukas-walton",
   },
   {
     rank: 41,
@@ -720,6 +757,7 @@ export const topRichers: TopRicher[] = [
     age: 61,
     country: "Italy",
     category: "Food & Beverage",
+    profileSlug: "giovanni-ferrero",
   },
   {
     rank: 42,
@@ -729,6 +767,7 @@ export const topRichers: TopRicher[] = [
     age: 97,
     country: "Hong Kong",
     category: "Diversified",
+    profileSlug: "li-ka-shing",
   },
   {
     rank: 43,
@@ -738,6 +777,7 @@ export const topRichers: TopRicher[] = [
     age: 33,
     country: "Austria",
     category: "Food & Beverage",
+    profileSlug: "mark-mateschitz",
   },
   {
     rank: 44,
@@ -747,6 +787,7 @@ export const topRichers: TopRicher[] = [
     age: 85,
     country: "Switzerland",
     category: "Logistics",
+    profileSlug: "gianluigi-aponte",
   },
   {
     rank: 44,
@@ -756,6 +797,7 @@ export const topRichers: TopRicher[] = [
     age: 80,
     country: "Switzerland",
     category: "Logistics",
+    profileSlug: "rafaela-aponte-diamant",
   },
   {
     rank: 46,
@@ -765,6 +807,7 @@ export const topRichers: TopRicher[] = [
     age: 55,
     country: "Italy",
     category: "Finance & Investments",
+    profileSlug: "andrea-pignataro",
   },
   {
     rank: 47,
@@ -774,6 +817,7 @@ export const topRichers: TopRicher[] = [
     age: 88,
     country: "Germany",
     category: "Logistics",
+    profileSlug: "klaus-michael-kuehne",
   },
   {
     rank: 48,
@@ -783,6 +827,7 @@ export const topRichers: TopRicher[] = [
     age: 87,
     country: "United States",
     category: "Healthcare",
+    profileSlug: "thomas-frist-jr",
   },
   {
     rank: 49,
@@ -792,6 +837,7 @@ export const topRichers: TopRicher[] = [
     age: 77,
     country: "France",
     category: "Fashion & Retail",
+    profileSlug: "alain-wertheimer",
   },
   {
     rank: 49,
@@ -801,6 +847,7 @@ export const topRichers: TopRicher[] = [
     age: 75,
     country: "France",
     category: "Fashion & Retail",
+    profileSlug: "gerard-wertheimer",
   },
   {
     rank: 51,
@@ -810,6 +857,7 @@ export const topRichers: TopRicher[] = [
     age: 75,
     country: "India",
     category: "Metals & Mining",
+    profileSlug: "savitri-jindal",
   },
   {
     rank: 52,
@@ -819,6 +867,7 @@ export const topRichers: TopRicher[] = [
     age: 79,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "stephen-schwarzman",
   },
   {
     rank: 53,
@@ -828,6 +877,7 @@ export const topRichers: TopRicher[] = [
     age: 41,
     country: "Italy",
     category: "Finance & Investments",
+    profileSlug: "paolo-ardoino",
   },
   {
     rank: 53,
@@ -837,6 +887,7 @@ export const topRichers: TopRicher[] = [
     age: 62,
     country: "Netherlands",
     category: "Finance & Investments",
+    profileSlug: "jean-louis-van-der-velde",
   },
   {
     rank: 55,
@@ -846,6 +897,7 @@ export const topRichers: TopRicher[] = [
     age: 54,
     country: "China",
     category: "Technology",
+    profileSlug: "william-ding",
   },
   {
     rank: 56,
@@ -855,6 +907,7 @@ export const topRichers: TopRicher[] = [
     age: 80,
     country: "United States",
     category: "Gambling & Casinos",
+    profileSlug: "miriam-adelson",
   },
   {
     rank: 57,
@@ -864,6 +917,7 @@ export const topRichers: TopRicher[] = [
     age: 60,
     country: "Russia",
     category: "Metals & Mining",
+    profileSlug: "alexey-mordashov",
   },
   {
     rank: 58,
@@ -873,6 +927,7 @@ export const topRichers: TopRicher[] = [
     age: 46,
     country: "China",
     category: "Technology",
+    profileSlug: "colin-huang",
   },
   {
     rank: 59,
@@ -882,6 +937,7 @@ export const topRichers: TopRicher[] = [
     age: 43,
     country: "Brazil",
     category: "Technology",
+    profileSlug: "eduardo-saverin",
   },
   {
     rank: 60,
@@ -891,6 +947,7 @@ export const topRichers: TopRicher[] = [
     age: 70,
     country: "United States",
     category: "Technology",
+    profileSlug: "eric-schmidt",
   },
   {
     rank: 61,
@@ -900,6 +957,7 @@ export const topRichers: TopRicher[] = [
     age: 70,
     country: "Israel",
     category: "Diversified",
+    profileSlug: "idan-ofer",
   },
   {
     rank: 62,
@@ -909,6 +967,7 @@ export const topRichers: TopRicher[] = [
     age: 75,
     country: "Israel",
     category: "Diversified",
+    profileSlug: "eyal-ofer",
   },
   {
     rank: 63,
@@ -918,6 +977,7 @@ export const topRichers: TopRicher[] = [
     age: 83,
     country: "China",
     category: "Manufacturing",
+    profileSlug: "he-xiangjian",
   },
   {
     rank: 63,
@@ -927,6 +987,7 @@ export const topRichers: TopRicher[] = [
     age: 64,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "abigail-johnson",
   },
   {
     rank: 63,
@@ -936,6 +997,7 @@ export const topRichers: TopRicher[] = [
     age: 80,
     country: "China",
     category: "Metals & Mining",
+    profileSlug: "zheng-shuliang",
   },
   {
     rank: 66,
@@ -945,6 +1007,7 @@ export const topRichers: TopRicher[] = [
     age: 75,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "marilyn-simons",
   },
   {
     rank: 67,
@@ -954,6 +1017,7 @@ export const topRichers: TopRicher[] = [
     age: 48,
     country: "United States",
     category: "Technology",
+    profileSlug: "robert-pera",
   },
   {
     rank: 68,
@@ -963,6 +1027,7 @@ export const topRichers: TopRicher[] = [
     age: 88,
     country: "United States",
     category: "Fashion & Retail",
+    profileSlug: "phil-knight",
   },
   {
     rank: 68,
@@ -972,6 +1037,7 @@ export const topRichers: TopRicher[] = [
     age: 33,
     country: "Czech Republic",
     category: "Manufacturing",
+    profileSlug: "michal-strnad",
   },
   {
     rank: 70,
@@ -981,6 +1047,7 @@ export const topRichers: TopRicher[] = [
     age: 75,
     country: "India",
     category: "Metals & Mining",
+    profileSlug: "lakshmi-mittal",
   },
   {
     rank: 71,
@@ -990,6 +1057,7 @@ export const topRichers: TopRicher[] = [
     age: 83,
     country: "United States",
     category: "Diversified",
+    profileSlug: "elaine-marshall",
   },
   {
     rank: 71,
@@ -999,6 +1067,7 @@ export const topRichers: TopRicher[] = [
     age: 80,
     country: "India",
     category: "Technology",
+    profileSlug: "shiv-nadar",
   },
   {
     rank: 73,
@@ -1008,6 +1077,7 @@ export const topRichers: TopRicher[] = [
     age: 71,
     country: "United States",
     category: "Technology",
+    profileSlug: "henry-samueli",
   },
   {
     rank: 74,
@@ -1017,6 +1087,7 @@ export const topRichers: TopRicher[] = [
     age: 61,
     country: "United States",
     category: "Technology",
+    profileSlug: "melinda-french-gates",
   },
   {
     rank: 75,
@@ -1026,6 +1097,7 @@ export const topRichers: TopRicher[] = [
     age: 59,
     country: "Germany",
     category: "Automotive",
+    profileSlug: "stefan-quandt",
   },
   {
     rank: 75,
@@ -1035,6 +1107,7 @@ export const topRichers: TopRicher[] = [
     age: 90,
     country: "Germany",
     category: "Manufacturing",
+    profileSlug: "reinhold-wuerth",
   },
   {
     rank: 77,
@@ -1044,6 +1117,7 @@ export const topRichers: TopRicher[] = [
     age: 51,
     country: "United States",
     category: "Energy",
+    profileSlug: "lyndal-stephens-greth",
   },
   {
     rank: 78,
@@ -1053,6 +1127,7 @@ export const topRichers: TopRicher[] = [
     age: 68,
     country: "United States",
     category: "Diversified",
+    profileSlug: "len-blavatnik",
   },
   {
     rank: 79,
@@ -1062,6 +1137,7 @@ export const topRichers: TopRicher[] = [
     age: 63,
     country: "Germany",
     category: "Automotive",
+    profileSlug: "susanne-klatten",
   },
   {
     rank: 79,
@@ -1071,6 +1147,7 @@ export const topRichers: TopRicher[] = [
     age: 65,
     country: "Russia",
     category: "Metals & Mining",
+    profileSlug: "vladimir-potanin",
   },
   {
     rank: 81,
@@ -1080,6 +1157,7 @@ export const topRichers: TopRicher[] = [
     age: 75,
     country: "Russia",
     category: "Energy",
+    profileSlug: "vagit-alekperov",
   },
   {
     rank: 81,
@@ -1089,6 +1167,7 @@ export const topRichers: TopRicher[] = [
     age: 89,
     country: "France",
     category: "Fashion & Retail",
+    profileSlug: "francois-pinault",
   },
   {
     rank: 83,
@@ -1098,6 +1177,7 @@ export const topRichers: TopRicher[] = [
     age: 61,
     country: "China",
     category: "Technology",
+    profileSlug: "jack-ma",
   },
   {
     rank: 84,
@@ -1107,6 +1187,7 @@ export const topRichers: TopRicher[] = [
     age: 81,
     country: "Indonesia",
     category: "Diversified",
+    profileSlug: "prajogo-pangestu",
   },
   {
     rank: 84,
@@ -1116,6 +1197,7 @@ export const topRichers: TopRicher[] = [
     age: 55,
     country: "United States",
     category: "Technology",
+    profileSlug: "mackenzie-scott",
   },
   {
     rank: 86,
@@ -1125,6 +1207,7 @@ export const topRichers: TopRicher[] = [
     age: 68,
     country: "Nigeria",
     category: "Manufacturing",
+    profileSlug: "aliko-dangote",
   },
   {
     rank: 87,
@@ -1134,6 +1217,7 @@ export const topRichers: TopRicher[] = [
     age: 58,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "peter-thiel",
   },
   {
     rank: 88,
@@ -1143,6 +1227,7 @@ export const topRichers: TopRicher[] = [
     age: 55,
     country: "France",
     category: "Food & Beverage",
+    profileSlug: "emmanuel-besnier",
   },
   {
     rank: 88,
@@ -1152,6 +1237,7 @@ export const topRichers: TopRicher[] = [
     age: 70,
     country: "Russia",
     category: "Energy",
+    profileSlug: "leonid-mikhelson",
   },
   {
     rank: 90,
@@ -1161,6 +1247,7 @@ export const topRichers: TopRicher[] = [
     age: 64,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "daniel-gilbert",
   },
   {
     rank: 90,
@@ -1170,6 +1257,7 @@ export const topRichers: TopRicher[] = [
     age: 56,
     country: "China",
     category: "Technology",
+    profileSlug: "lei-jun",
   },
   {
     rank: 90,
@@ -1179,6 +1267,7 @@ export const topRichers: TopRicher[] = [
     age: 70,
     country: "Germany",
     category: "Technology",
+    profileSlug: "andreas-von-bechtolsheim",
   },
   {
     rank: 93,
@@ -1188,6 +1277,7 @@ export const topRichers: TopRicher[] = [
     age: 57,
     country: "Vietnam",
     category: "Diversified",
+    profileSlug: "pham-nhat-vuong",
   },
   {
     rank: 94,
@@ -1197,6 +1287,7 @@ export const topRichers: TopRicher[] = [
     age: 73,
     country: "Greece",
     category: "Finance & Investments",
+    profileSlug: "vicky-safra",
   },
   {
     rank: 95,
@@ -1206,6 +1297,7 @@ export const topRichers: TopRicher[] = [
     age: 57,
     country: "South Korea",
     category: "Technology",
+    profileSlug: "jay-y-lee",
   },
   {
     rank: 95,
@@ -1215,6 +1307,7 @@ export const topRichers: TopRicher[] = [
     age: 84,
     country: "India",
     category: "Healthcare",
+    profileSlug: "cyrus-poonawalla",
   },
   {
     rank: 97,
@@ -1224,6 +1317,7 @@ export const topRichers: TopRicher[] = [
     age: 73,
     country: "United States",
     category: "Technology",
+    profileSlug: "rick-cohen",
   },
   {
     rank: 98,
@@ -1233,6 +1327,7 @@ export const topRichers: TopRicher[] = [
     age: 77,
     country: "United States",
     category: "Finance & Investments",
+    profileSlug: "israel-englander",
   },
   {
     rank: 99,
@@ -1242,6 +1337,7 @@ export const topRichers: TopRicher[] = [
     age: 59,
     country: "Russia",
     category: "Finance & Investments",
+    profileSlug: "suleiman-kerimov",
   },
   {
     rank: 100,
@@ -1251,6 +1347,7 @@ export const topRichers: TopRicher[] = [
     age: 70,
     country: "India",
     category: "Healthcare",
+    profileSlug: "dilip-shanghvi",
   },
 ];
 
@@ -1696,7 +1793,7 @@ export function getTopRicherDeltaNetWorthLabel(
   )}`;
 }
 
-export function getTopRicherForbesRankLabel(
+export function getTopRicherGlobalRankLabel(
   rank: number,
   locale: TopRicherLocale = "ko",
 ) {
@@ -1729,26 +1826,26 @@ export function getTopRicherListRankLabel(
   locale: TopRicherLocale = "ko",
 ) {
   if (locale === "ko") {
-    return `앱 순번 ${position} · 포브스 ${rank}위`;
+    return `앱 순번 ${position} · 글로벌 ${rank}위`;
   }
 
   if (locale === "ja") {
-    return `アプリNo.${position} · Forbes ${rank}位`;
+    return `アプリNo.${position} · 世界 ${rank}位`;
   }
 
   if (locale === "zh") {
-    return `应用序号 ${position} · Forbes 第 ${rank} 位`;
+    return `应用序号 ${position} · 全球 第 ${rank} 位`;
   }
 
   if (locale === "es") {
-    return `N.º app ${position} · Forbes puesto ${rank}`;
+    return `N.º app ${position} · puesto mundial ${rank}`;
   }
 
   if (locale === "fr") {
-    return `No app ${position} · rang Forbes ${rank}`;
+    return `No app ${position} · rang mondial ${rank}`;
   }
 
-  return `App No. ${position} · Forbes rank ${rank}`;
+  return `App No. ${position} · Global rank ${rank}`;
 }
 
 export function getTopRicherScenarioRankLabel(

@@ -16,7 +16,7 @@ import {
   getTopRicherCompanyLabel,
   getTopRicherCountryLabel,
   getTopRicherDisplayName,
-  getTopRicherForbesRankLabel,
+  getTopRicherGlobalRankLabel,
   getTopRicherNetWorthLabel,
   getTopRicherProfileHref,
   getTopRicherSlug,
@@ -214,7 +214,7 @@ export function RichersWorkspace() {
               label="정렬"
               value={sortMode}
               values={[
-                ["rank", t("common.forbesRank", "포브스 순위")],
+                ["rank", t("common.forbesRank", "글로벌 순위")],
                 ["wealth", t("common.netWorth", "순자산")],
                 ["name", t("common.name", "이름")],
               ]}
@@ -351,7 +351,7 @@ function ComparisonStrip({
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-xs font-semibold text-[#d8a24f]">
-                Forbes {getTopRicherForbesRankLabel(person.rank, locale)}
+                글로벌 {getTopRicherGlobalRankLabel(person.rank, locale)}
               </p>
               <p className="mt-1 truncate text-sm font-semibold text-white">
                 {getTopRicherDisplayName(person, locale)}
@@ -393,7 +393,7 @@ function WorkspaceRow({
   return (
     <tr className="text-sm transition hover:bg-white/[0.06]">
       <td className="px-4 py-3 font-semibold text-[#e8bd70]">
-        {getTopRicherForbesRankLabel(person.rank, locale)}
+        {getTopRicherGlobalRankLabel(person.rank, locale)}
       </td>
       <td className="px-4 py-3">
         <PersonIdentity person={person} />
@@ -433,7 +433,7 @@ function WorkspaceCard(props: WorkspacePersonProps) {
       </div>
       <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/56">
         <span className="rounded-[8px] border border-white/10 px-2 py-1">
-          Forbes {getTopRicherForbesRankLabel(person.rank, locale)}
+          글로벌 {getTopRicherGlobalRankLabel(person.rank, locale)}
         </span>
         <span className="rounded-[8px] border border-white/10 px-2 py-1">
           {t(`country.${person.country}`, getTopRicherCountryLabel(person.country, locale))}
