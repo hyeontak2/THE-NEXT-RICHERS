@@ -468,11 +468,139 @@ function CompanyInsight({ title, body }: { title: string; body: string }) {
 }
 
 function CompanyMark({ company }: { company: MarketCapCompany }) {
+  const [failed, setFailed] = useState(false);
+  const logoUrl = getLogoUrl(company.ticker, company.name);
+
+  if (failed || !logoUrl) {
+    return (
+      <span className="grid size-11 shrink-0 place-items-center rounded-[8px] border border-[#ded8ca] bg-[#111411] text-xs font-semibold text-[#f3c56f]">
+        {getInitials(company.name)}
+      </span>
+    );
+  }
+
   return (
-    <span className="grid size-11 shrink-0 place-items-center rounded-[8px] border border-[#ded8ca] bg-[#111411] text-xs font-semibold text-[#f3c56f]">
-      {getInitials(company.name)}
+    <span className="grid size-11 shrink-0 place-items-center rounded-[8px] border border-[#ded8ca] bg-white p-1.5">
+      <img
+        src={logoUrl}
+        alt={`${company.name} logo`}
+        className="size-full object-contain"
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
     </span>
   );
+}
+
+function getLogoUrl(ticker: string, name: string): string | null {
+  // Map ticker → known domain for Clearbit logo API
+  const domainMap: Record<string, string> = {
+    NVDA: "nvidia.com",
+    GOOG: "abc.xyz",
+    AAPL: "apple.com",
+    MSFT: "microsoft.com",
+    AMZN: "amazon.com",
+    TSM: "tsmc.com",
+    AVGO: "broadcom.com",
+    "2222.SR": "aramco.com",
+    TSLA: "tesla.com",
+    "005930.KS": "samsung.com",
+    META: "meta.com",
+    MU: "micron.com",
+    "000660.KS": "skhynix.com",
+    "BRK-B": "berkshirehathaway.com",
+    LLY: "lilly.com",
+    WMT: "walmart.com",
+    AMD: "amd.com",
+    JPM: "jpmorganchase.com",
+    ASML: "asml.com",
+    INTC: "intel.com",
+    V: "visa.com",
+    XOM: "exxonmobil.com",
+    JNJ: "jnj.com",
+    TCEHY: "tencent.com",
+    ORCL: "oracle.com",
+    CSCO: "cisco.com",
+    LRCX: "lamresearch.com",
+    AMAT: "amat.com",
+    COST: "costco.com",
+    MA: "mastercard.com",
+    CAT: "caterpillar.com",
+    "601939.SS": "ccb.com",
+    ARM: "arm.com",
+    ABBV: "abbvie.com",
+    BAC: "bankofamerica.com",
+    CVX: "chevron.com",
+    UNH: "unitedhealthgroup.com",
+    KO: "coca-cola.com",
+    "601288.SS": "abchina.com",
+    GE: "ge.com",
+    PG: "pg.com",
+    NFLX: "netflix.com",
+    MS: "morganstanley.com",
+    "RO.SW": "roche.com",
+    KLAC: "kla.com",
+    "1398.HK": "icbc.com.cn",
+    HD: "homedepot.com",
+    HSBC: "hsbc.com",
+    GS: "goldmansachs.com",
+    PLTR: "palantir.com",
+    "601988.SS": "bankofchina.com",
+    MRK: "merck.com",
+    SNDK: "sandisk.com",
+    "MC.PA": "lvmh.com",
+    NVS: "novartis.com",
+    PM: "pmi.com",
+    RY: "rbc.com",
+    AZN: "astrazeneca.com",
+    "285A.T": "kioxia.com",
+    TXN: "ti.com",
+    BABA: "alibabagroup.com",
+    "300750.SZ": "catl.com",
+    "NESN.SW": "nestle.com",
+    DELL: "dell.com",
+    WFC: "wellsfargo.com",
+    IBM: "ibm.com",
+    GEV: "gevernova.com",
+    RTX: "rtx.com",
+    MRVL: "marvell.com",
+    LIN: "linde.com",
+    "0857.HK": "petrochina.com.cn",
+    "OR.PA": "loreal.com",
+    "600519.SS": "moutai.com.cn",
+    C: "citigroup.com",
+    SHEL: "shell.com",
+    "SIE.DE": "siemens.com",
+    BHP: "bhp.com",
+    "9984.T": "softbank.jp",
+    "IHC.AE": "ihcuae.com",
+    TM: "toyota.com",
+    PANW: "paloaltonetworks.com",
+    MUFG: "mufg.jp",
+    "0941.HK": "chinamobileltd.com",
+    QCOM: "qualcomm.com",
+    AXP: "americanexpress.com",
+    "2454.TW": "mediatek.com",
+    STX: "seagate.com",
+    "RMS.PA": "hermes.com",
+    "601138.SS": "fii-foxconn.com",
+    ANET: "arista.com",
+    TMUS: "t-mobile.com",
+    ADI: "analog.com",
+    MCD: "mcdonalds.com",
+    "ITX.MC": "inditex.com",
+    VZ: "verizon.com",
+    "PRX.AS": "prosus.com",
+    PEP: "pepsico.com",
+    TTE: "totalenergies.com",
+    NVO: "novonordisk.com",
+    SPCX: "spacex.com",
+  };
+
+  const domain = domainMap[ticker];
+  if (!domain) return null;
+
+  return `https://logo.clearbit.com/${domain}`;
 }
 
 function getBusinessModel(company: MarketCapCompany) {
