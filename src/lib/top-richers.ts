@@ -490,7 +490,6 @@ export const topRichers: TopRicher[] = [
     category: "Fashion & Retail",
     profileSlug: "jim-walton",
   },
-  },
 
   {
     rank: 14,
