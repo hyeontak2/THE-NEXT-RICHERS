@@ -600,7 +600,7 @@ function getLogoUrl(ticker: string, name: string): string | null {
   const domain = domainMap[ticker];
   if (!domain) return null;
 
-  return `https://logo.clearbit.com/${domain}`;
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
 }
 
 function getBusinessModel(company: MarketCapCompany) {
