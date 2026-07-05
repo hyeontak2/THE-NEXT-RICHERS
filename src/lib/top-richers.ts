@@ -15,9 +15,9 @@ export const topRichersSource = {
   name: "Forbes 실시간 억만장자 순위",
   url: "https://www.forbes.com/real-time-billionaires/",
   publishedAt: "2026-03-10",
-  informationAsOf: "2026-06-22",
-  retrievedAt: "2026-06-23",
-  note: "Real-time Forbes data as of June 22, 2026. Stock prices fluctuate daily.",
+  informationAsOf: "2026-07-05",
+  retrievedAt: "2026-07-05",
+  note: "Real-time Forbes data as of July 5, 2026. Stock prices fluctuate daily.",
   stats: {
     totalBillionaires: 3383,
     totalNetWorthTrillion: 20.1,
