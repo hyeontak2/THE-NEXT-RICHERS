@@ -5,23 +5,19 @@ import {
   ArrowUp,
   ArrowDown,
   BarChart3,
+  Building2,
   Database,
   Globe2,
+  Layers3,
   ListOrdered,
   TrendingUp,
   UsersRound,
-  Layers3,
-  Building2,
 } from "lucide-react";
 import Link from "next/link";
 import { useMemo } from "react";
 import { AppShell, PageIntro } from "./app-chrome";
-import { marketCapCompanies, marketCapSource, marketCapSectorGroups } from "@/lib/market-cap-companies";
-import {
-  getTopRicherNetWorthLabel,
-  topRichers,
-  topRichersSource,
-} from "@/lib/top-richers";
+import { marketCapCompanies, marketCapSource } from "@/lib/market-cap-companies";
+import { topRichersSource } from "@/lib/top-richers";
 
 export default function RichersAppPage() {
   const totalTop100Cap = useMemo(
@@ -34,7 +30,6 @@ export default function RichersAppPage() {
   );
   const topTenShare = Math.round((topTenCap / totalTop100Cap) * 100);
 
-  // Sector breakdown
   const sectorStats = useMemo(() => {
     const map = new Map<string, { count: number; cap: number }>();
     for (const c of marketCapCompanies) {
@@ -49,7 +44,6 @@ export default function RichersAppPage() {
       .sort((a, b) => b.cap - a.cap);
   }, []);
 
-  // Region breakdown
   const regionStats = useMemo(() => {
     const map = new Map<string, { count: number; cap: number }>();
     for (const c of marketCapCompanies) {
@@ -64,7 +58,6 @@ export default function RichersAppPage() {
       .sort((a, b) => b.cap - a.cap);
   }, []);
 
-  // AI·Semiconductor sector total
   const aiSector = sectorStats.find((s) => s.name === "AI·반도체");
   const aiShare = aiSector ? Math.round((aiSector.cap / totalTop100Cap) * 100) : 0;
 
@@ -77,30 +70,34 @@ export default function RichersAppPage() {
         description="글로벌 부자 TOP 100의 순위, 인물 프로필, 시장 시나리오, 출처 검증을 빠르게 탐색하는 리서치 앱입니다."
       />
 
-      {/* === Market Overview Cards === */}
+      {/* === Premium Metric Cards === */}
       <section className="px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <MetricCard
               icon={BarChart3}
+              iconBg="bg-emerald-600/10 text-emerald-700"
               label="글로벌 시가총액"
               value={`$${(totalTop100Cap / 1000).toFixed(1)}T`}
               sub={`${marketCapCompanies.length}개 기업 · 기준 ${marketCapSource.checkedAt}`}
             />
             <MetricCard
               icon={Globe2}
+              iconBg="bg-amber-600/10 text-amber-700"
               label="TOP 10 집중도"
               value={`${topTenShare}%`}
-              sub={`상위 10개 기업 합산 ${(topTenCap / 1000).toFixed(1)}T`}
+              sub={`상위 10개 합산 ${(topTenCap / 1000).toFixed(1)}T`}
             />
             <MetricCard
               icon={TrendingUp}
+              iconBg="bg-sky-600/10 text-sky-700"
               label="AI·반도체 비중"
               value={`${aiShare}%`}
               sub={`${aiSector?.count ?? 0}개 기업 · 시장 주도 섹터`}
             />
             <MetricCard
               icon={UsersRound}
+              iconBg="bg-violet-600/10 text-violet-700"
               label="억만장자 집계"
               value={topRichersSource.stats.totalBillionaires.toLocaleString()}
               sub={`순자산 합계 $${topRichersSource.stats.totalNetWorthTrillion}T`}
@@ -109,104 +106,133 @@ export default function RichersAppPage() {
         </div>
       </section>
 
-      {/* === Sector Breakdown (Donut Chart) === */}
+      {/* === Premium Charts Section === */}
       <section className="mt-6 px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-4 lg:grid-cols-2">
-            <div className="border border-[#ded8ca] bg-white p-5 shadow-sm sm:p-6">
-              <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
-                <BarChart3 className="size-4" aria-hidden="true" />
-                섹터별 시가총액 분포
-              </p>
-              <div className="mt-5 flex flex-wrap items-center gap-8">
-                <div className="shrink-0">
-                  <DonutChart data={sectorStats} total={totalTop100Cap} />
-                </div>
-                <div className="min-w-0 flex-1 space-y-2">
-                  {sectorStats.map((s) => (
-                    <div key={s.name} className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="inline-block size-3 shrink-0 rounded-full"
-                          style={{ backgroundColor: sectorColor(s.name) }}
-                        />
-                        <span className="text-sm text-[#111411]">{s.name}</span>
+            <ChartCard
+              icon={BarChart3}
+              title="섹터별 시가총액 분포"
+              hint="전체 TOP 100 시총 기준"
+            >
+              <DonutChart data={sectorStats} total={totalTop100Cap} />
+              <div className="space-y-2">
+                {sectorStats.slice(0, 6).map((s) => {
+                  const pct = ((s.cap / totalTop100Cap) * 100);
+                  return (
+                    <div key={s.name}>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium text-[#111411]">{s.name}</span>
+                        <span className="font-semibold text-[#111411]">{pct.toFixed(1)}%</span>
                       </div>
-                      <span className="text-sm font-semibold text-[#111411]">
-                        {((s.cap / totalTop100Cap) * 100).toFixed(1)}%
-                      </span>
+                      <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-[#f0ebe1]">
+                        <div
+                          className="h-full rounded-full transition-all duration-500"
+                          style={{ width: `${pct}%`, backgroundColor: sectorColor(s.name) }}
+                        />
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
+                {sectorStats.length > 6 && (
+                  <div className="text-xs text-[#73786f]">
+                    +{sectorStats.length - 6}개 소규모 섹터
+                  </div>
+                )}
               </div>
-            </div>
+            </ChartCard>
 
-            <div className="border border-[#ded8ca] bg-white p-5 shadow-sm sm:p-6">
-              <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
-                <Globe2 className="size-4" aria-hidden="true" />
-                지역별 시가총액 분포
-              </p>
-              <div className="mt-5 flex flex-wrap items-center gap-8">
-                <div className="shrink-0">
-                  <DonutChart data={regionStats} total={totalTop100Cap} />
-                </div>
-                <div className="min-w-0 flex-1 space-y-2">
-                  {regionStats.map((r) => (
-                    <div key={r.name} className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="inline-block size-3 shrink-0 rounded-full"
-                          style={{ backgroundColor: regionColor(r.name) }}
-                        />
-                        <span className="text-sm text-[#111411]">{r.name}</span>
+            <ChartCard
+              icon={Globe2}
+              title="지역별 시가총액 분포"
+              hint="전체 TOP 100 시총 기준"
+            >
+              <DonutChart data={regionStats} total={totalTop100Cap} />
+              <div className="space-y-2">
+                {regionStats.map((r) => {
+                  const pct = ((r.cap / totalTop100Cap) * 100);
+                  return (
+                    <div key={r.name}>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="font-medium text-[#111411]">{r.name}</span>
+                        <span className="font-semibold text-[#111411]">{pct.toFixed(1)}%</span>
                       </div>
-                      <span className="text-sm font-semibold text-[#111411]">
-                        {((r.cap / totalTop100Cap) * 100).toFixed(1)}%
-                      </span>
+                      <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-[#f0ebe1]">
+                        <div
+                          className="h-full rounded-full transition-all duration-500"
+                          style={{ width: `${pct}%`, backgroundColor: regionColor(r.name) }}
+                        />
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
-            </div>
+            </ChartCard>
           </div>
         </div>
       </section>
 
-      {/* === Top Companies Mini Table === */}
+      {/* === Premium TOP 10 Table === */}
       <section className="mt-6 px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="border border-[#ded8ca] bg-white p-5 shadow-sm sm:p-6">
-            <div className="flex items-center justify-between">
-              <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
-                <Building2 className="size-4" aria-hidden="true" />
-                시가총액 TOP 10
-              </p>
+          <div className="overflow-hidden rounded-xl border border-[#ded8ca] bg-white shadow-sm">
+            <div className="flex items-center justify-between border-b border-[#f0ebe1] px-5 py-4 sm:px-6">
+              <div className="flex items-center gap-3">
+                <span className="grid size-9 place-items-center rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-sm">
+                  <Building2 className="size-4" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
+                    시가총액 TOP 10
+                  </p>
+                  <p className="text-xs text-[#73786f]">기준 {marketCapSource.checkedAt}</p>
+                </div>
+              </div>
               <Link
                 href="/app/market"
-                className="text-sm font-semibold text-[#2f6f4e] hover:underline"
+                className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 transition hover:text-emerald-900"
               >
-                전체 100개 보기 →
+                전체 100개 보기
+                <ArrowUp className="size-3.5 rotate-45" />
               </Link>
             </div>
-            <div className="mt-4 overflow-x-auto">
+            <div className="overflow-x-auto">
               <table className="w-full min-w-[500px] text-left text-sm">
                 <thead>
-                  <tr className="border-b border-[#e8e1d3] text-xs uppercase text-[#73786f]">
-                    <th className="py-2 pr-3 font-semibold">순위</th>
-                    <th className="py-2 pr-3 font-semibold">기업</th>
-                    <th className="py-2 pr-3 font-semibold">티커</th>
-                    <th className="py-2 pr-3 font-semibold">시가총액</th>
-                    <th className="py-2 pr-3 font-semibold">섹터</th>
+                  <tr className="bg-[#faf8f4] text-xs uppercase tracking-wider text-[#73786f]">
+                    <th className="px-5 py-3 font-semibold">순위</th>
+                    <th className="px-5 py-3 font-semibold">기업</th>
+                    <th className="px-5 py-3 font-semibold">티커</th>
+                    <th className="px-5 py-3 font-semibold">시가총액</th>
+                    <th className="px-5 py-3 font-semibold">섹터</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {marketCapCompanies.slice(0, 10).map((c) => (
-                    <tr key={c.ticker} className="border-b border-[#f0ebe1] last:border-0">
-                      <td className="py-2 pr-3 font-semibold text-[#9a6a20]">#{c.rank}</td>
-                      <td className="py-2 pr-3 font-semibold text-[#111411]">{c.name}</td>
-                      <td className="py-2 pr-3 text-[#73786f]">{c.ticker}</td>
-                      <td className="py-2 pr-3 font-semibold">{c.marketCap}</td>
-                      <td className="py-2 pr-3 text-[#5d625b]">{c.sector}</td>
+                  {marketCapCompanies.slice(0, 10).map((c, i) => (
+                    <tr
+                      key={c.ticker}
+                      className={`border-b border-[#f0ebe1] transition hover:bg-[#faf8f4] last:border-0 ${
+                        i < 3 ? "bg-amber-50/30" : ""
+                      }`}
+                    >
+                      <td className="px-5 py-3.5">
+                        <span className={`inline-flex size-7 items-center justify-center rounded-md text-sm font-bold ${
+                          i === 0 ? "bg-amber-100 text-amber-800" :
+                          i === 1 ? "bg-slate-100 text-slate-700" :
+                          i === 2 ? "bg-orange-100 text-orange-700" :
+                          "text-[#9a6a20]"
+                        }`}>
+                          {c.rank}
+                        </span>
+                      </td>
+                      <td className="px-5 py-3.5 font-semibold text-[#111411]">{c.name}</td>
+                      <td className="px-5 py-3.5 font-mono text-xs text-[#73786f]">{c.ticker}</td>
+                      <td className="px-5 py-3.5 font-semibold text-[#111411]">{c.marketCap}</td>
+                      <td className="px-5 py-3.5">
+                        <span className="inline-block rounded-full bg-[#f0ebe1] px-2.5 py-0.5 text-xs font-medium text-[#5d625b]">
+                          {c.sector}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -216,45 +242,55 @@ export default function RichersAppPage() {
         </div>
       </section>
 
-      {/* === Quick Navigation === */}
+      {/* === Premium Quick Navigation === */}
       <section className="mt-6 px-4 sm:px-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
-            빠른 이동
-          </p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex items-center gap-3">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#ded8ca] to-transparent" />
+            <p className="shrink-0 text-xs font-semibold uppercase tracking-widest text-[#9a6a20]">
+              빠른 이동
+            </p>
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#ded8ca] to-transparent" />
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <QuickLink
               icon={ListOrdered}
+              iconBg="bg-amber-100 text-amber-700"
               title="억만장자 랭킹"
               desc="TOP 100 순자산 순위와 인물 프로필"
               href="/app/ranking"
             />
             <QuickLink
               icon={BarChart3}
+              iconBg="bg-emerald-100 text-emerald-700"
               title="시장 분석"
               desc="시가총액 100개 기업 분석과 필터"
               href="/app/market"
             />
             <QuickLink
               icon={UsersRound}
+              iconBg="bg-sky-100 text-sky-700"
               title="인물 프로필"
               desc="개인별 성장 배경과 사업 전략"
               href="/app/profiles"
             />
             <QuickLink
               icon={Activity}
+              iconBg="bg-violet-100 text-violet-700"
               title="시장 시나리오"
               desc="섹터별 충격 시뮬레이션"
               href="/app/market"
             />
             <QuickLink
               icon={Layers3}
+              iconBg="bg-slate-100 text-slate-700"
               title="출처 검증"
               desc="데이터 계층과 신뢰도 기준"
               href="/app/sources"
             />
             <QuickLink
               icon={Globe2}
+              iconBg="bg-indigo-100 text-indigo-700"
               title="글로벌 비교"
               desc="지역·국가별 TOP 기업 비교"
               href="/app/market"
@@ -263,7 +299,7 @@ export default function RichersAppPage() {
         </div>
       </section>
 
-      <div className="h-8" />
+      <div className="h-10" />
     </AppShell>
   );
 }
@@ -272,34 +308,74 @@ export default function RichersAppPage() {
 
 function MetricCard({
   icon: Icon,
+  iconBg,
   label,
   value,
   sub,
 }: {
   icon: any;
+  iconBg: string;
   label: string;
   value: string;
   sub: string;
 }) {
   return (
-    <div className="border border-[#ded8ca] bg-white p-5 shadow-sm">
-      <div className="flex items-start justify-between">
-        <p className="text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">{label}</p>
-        <Icon className="size-5 text-[#9a6a20]" aria-hidden="true" />
+    <div className="group relative overflow-hidden rounded-xl border border-[#ded8ca] bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 sm:p-6">
+      <div className="absolute -right-6 -top-6 size-24 rounded-full bg-gradient-to-br from-white/0 to-[#f7f6f1] opacity-0 transition-opacity group-hover:opacity-100" />
+      <div className="relative">
+        <div className="flex items-start justify-between">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#9a6a20]">{label}</p>
+          <span className={`grid size-8 place-items-center rounded-lg ${iconBg}`}>
+            <Icon className="size-4" aria-hidden="true" />
+          </span>
+        </div>
+        <p className="mt-3 text-3xl font-bold tracking-tight text-[#111411]">{value}</p>
+        <p className="mt-2 text-sm leading-snug text-[#73786f]">{sub}</p>
       </div>
-      <p className="mt-3 text-3xl font-semibold text-[#111411]">{value}</p>
-      <p className="mt-2 text-sm text-[#5d625b]">{sub}</p>
+    </div>
+  );
+}
+
+function ChartCard({
+  icon: Icon,
+  title,
+  hint,
+  children,
+}: {
+  icon: any;
+  title: string;
+  hint: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-xl border border-[#ded8ca] bg-white p-5 shadow-sm sm:p-6">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="grid size-8 place-items-center rounded-lg bg-[#f7f6f1] text-[#9a6a20]">
+            <Icon className="size-4" />
+          </span>
+          <p className="text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
+            {title}
+          </p>
+        </div>
+        <span className="text-xs text-[#73786f]">{hint}</span>
+      </div>
+      <div className="mt-5 grid gap-6 sm:grid-cols-[180px_1fr] sm:items-start">
+        {children}
+      </div>
     </div>
   );
 }
 
 function QuickLink({
   icon: Icon,
+  iconBg,
   title,
   desc,
   href,
 }: {
   icon: any;
+  iconBg: string;
   title: string;
   desc: string;
   href: string;
@@ -307,12 +383,14 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="flex items-start gap-4 border border-[#ded8ca] bg-white p-5 shadow-sm transition hover:border-[#c8923d] hover:shadow-md"
+      className="group flex items-start gap-4 rounded-xl border border-[#ded8ca] bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
     >
-      <Icon className="mt-0.5 size-5 shrink-0 text-[#9a6a20]" aria-hidden="true" />
-      <div>
-        <p className="font-semibold text-[#111411]">{title}</p>
-        <p className="mt-1 text-sm text-[#5d625b]">{desc}</p>
+      <span className={`grid size-10 shrink-0 place-items-center rounded-xl ${iconBg} transition-transform group-hover:scale-110`}>
+        <Icon className="size-5" aria-hidden="true" />
+      </span>
+      <div className="min-w-0">
+        <p className="font-semibold text-[#111411] group-hover:text-emerald-700 transition-colors">{title}</p>
+        <p className="mt-1 text-sm leading-snug text-[#73786f]">{desc}</p>
       </div>
     </Link>
   );
@@ -321,7 +399,7 @@ function QuickLink({
 function DonutChart({
   data,
   total,
-  size = 140,
+  size = 160,
 }: {
   data: Array<{ name: string; cap: number }>;
   total: number;
@@ -329,138 +407,138 @@ function DonutChart({
 }) {
   const cx = size / 2;
   const cy = size / 2;
-  const r = size * 0.38;
-  const strokeW = size * 0.14;
+  const outerR = size * 0.46;
+  const innerR = size * 0.30;
 
-  let cumulative = 0;
-  const slices = data.map((d) => {
-    const pct = d.cap / total;
-    const startAngle = cumulative * 360;
-    cumulative += pct;
-    const endAngle = cumulative * 360;
-    return { name: d.name, pct, startAngle, endAngle };
-  });
-
-  // Only render top-N + "기타" if too many slices
-  const maxSlices = 6;
-  let mainSlices = slices.slice(0, maxSlices);
-  const rest = slices.slice(maxSlices);
-  if (rest.length > 0) {
-    const restPct = rest.reduce((s, r) => s + r.pct, 0);
-    mainSlices.push({ name: "기타", pct: restPct, startAngle: 0, endAngle: 0 }); // placeholder
+  // Build arcs
+  const segments = data.map((d) => ({ name: d.name, pct: d.cap / total }));
+  
+  // Combine small segments
+  const maxSlices = 5;
+  let displaySegs = segments.slice(0, maxSlices);
+  if (segments.length > maxSlices) {
+    const restPct = segments.slice(maxSlices).reduce((s, r) => s + r.pct, 0);
+    displaySegs.push({ name: "기타", pct: restPct });
   }
 
+  const arcs: Array<{ name: string; pct: number; path: string; color: string }> = [];
+  let angle = -90;
+
+  for (const seg of displaySegs) {
+    if (seg.pct < 0.001) continue;
+    const startAng = angle;
+    const endAng = angle + seg.pct * 360;
+    const startRad = (startAng * Math.PI) / 180;
+    const endRad = (endAng * Math.PI) / 180;
+
+    const x1 = cx + outerR * Math.cos(startRad);
+    const y1 = cy + outerR * Math.sin(startRad);
+    const x2 = cx + outerR * Math.cos(endRad);
+    const y2 = cy + outerR * Math.sin(endRad);
+
+    // Inner circle points
+    const ix1 = cx + innerR * Math.cos(endRad);
+    const iy1 = cy + innerR * Math.sin(endRad);
+    const ix2 = cx + innerR * Math.cos(startRad);
+    const iy2 = cy + innerR * Math.sin(startRad);
+
+    const largeArc = seg.pct > 0.5 ? 1 : 0;
+
+    const path = [
+      `M ${x1.toFixed(2)} ${y1.toFixed(2)}`,
+      `A ${outerR} ${outerR} 0 ${largeArc} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`,
+      `L ${ix1.toFixed(2)} ${iy1.toFixed(2)}`,
+      `A ${innerR} ${innerR} 0 ${largeArc} 0 ${ix2.toFixed(2)} ${iy2.toFixed(2)}`,
+      "Z",
+    ].join(" ");
+
+    const color = isSectorData(data)
+      ? sectorColor(seg.name)
+      : regionColor(seg.name);
+
+    arcs.push({ name: seg.name, pct: seg.pct, path, color });
+    angle = endAng;
+  }
+
+  const topLabel = data[0]
+    ? `${data[0].name?.slice(0, 4)}`
+    : "";
+  const topPct = data[0]
+    ? `${(data[0].cap / total * 100).toFixed(1)}%`
+    : "";
+
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      {(() => {
-        const segments: Array<{ name: string; pct: number }> = [];
-        let start = 0;
-        for (const s of slices) {
-          segments.push({ name: s.name, pct: s.pct });
-        }
-
-        // Build actual arc paths
-        const arcs: Array<{
-          name: string;
-          pct: number;
-          path: string;
-          color: string;
-        }> = [];
-        let angle = -90; // start from top
-        const segmentsToDraw = segments.slice(0, maxSlices);
-        if (segments.length > maxSlices) {
-          const restPct = segments.slice(maxSlices).reduce((s, r) => s + r.pct, 0);
-          segmentsToDraw.push({ name: "기타", pct: restPct });
-        }
-
-        for (const seg of segmentsToDraw) {
-          if (seg.pct < 0.001) continue;
-          const pct = seg.pct;
-          const startAng = angle;
-          const endAng = angle + pct * 360;
-          const startRad = (startAng * Math.PI) / 180;
-          const endRad = (endAng * Math.PI) / 180;
-
-          const x1 = cx + r * Math.cos(startRad);
-          const y1 = cy + r * Math.sin(startRad);
-          const x2 = cx + r * Math.cos(endRad);
-          const y2 = cy + r * Math.sin(endRad);
-
-          const largeArc = pct > 0.5 ? 1 : 0;
-
-          const path = [
-            `M ${cx} ${cy}`,
-            `L ${x1.toFixed(2)} ${y1.toFixed(2)}`,
-            `A ${r} ${r} 0 ${largeArc} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`,
-            "Z",
-          ].join(" ");
-
-          const color =
-            seg.name === "기타"
-              ? "#d0cbbc"
-              : seg.name.includes("AI") || seg.name.includes("반도체")
-                ? "#2f6f4e"
-                : seg.name.includes("금융")
-                  ? "#d8a24f"
-                  : seg.name.includes("헬스케어")
-                    ? "#5f8b7a"
-                    : seg.name.includes("소비")
-                      ? "#c8923d"
-                      : seg.name.includes("에너지")
-                        ? "#8a7a5a"
-                        : seg.name.includes("산업")
-                          ? "#6a7a8a"
-                          : seg.name.includes("자동차")
-                            ? "#4a6a7a"
-                            : "#9a8a7a";
-
-          arcs.push({ name: seg.name, pct, path, color });
-          angle = endAng;
-        }
-
-        return arcs.map((arc) => <path key={arc.name} d={arc.path} fill={arc.color} />);
-      })()}
-      <circle cx={cx} cy={cy} r={r * 0.55} fill="#fff" />
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      className="shrink-0"
+    >
+      <defs>
+        {arcs.map((arc) => (
+          <filter key={`shadow-${arc.name}`}>
+            <feDropShadow dx={0} dy={1} stdDeviation={1} floodOpacity={0.15} />
+          </filter>
+        ))}
+      </defs>
+      {arcs.map((arc, i) => (
+        <path
+          key={arc.name}
+          d={arc.path}
+          fill={arc.color}
+          opacity={0.92}
+          className="transition-all hover:opacity-100"
+        />
+      ))}
+      <circle cx={cx} cy={cy} r={innerR - 2} fill="#fff" />
       <text
         x={cx}
-        y={cy - 4}
+        y={cy - 5}
         textAnchor="middle"
-        className="text-xs font-semibold"
+        fontSize="12"
+        fontWeight="700"
         fill="#111411"
       >
-        {data[0]?.name?.slice(0, 6) || ""}
+        {topLabel}
       </text>
       <text
         x={cx}
-        y={cy + 12}
+        y={cy + 11}
         textAnchor="middle"
         fontSize="11"
+        fontWeight="600"
         fill="#73786f"
       >
-        {data[0] ? `${(data[0].cap / total * 100).toFixed(1)}%` : ""}
+        {topPct}
       </text>
     </svg>
   );
 }
 
+function isSectorData(data: Array<{ name: string }>) {
+  return data.some((d) =>
+    ["AI", "반도체", "금융", "헬스케어", "소비", "에너지"].some((kw) =>
+      d.name.includes(kw),
+    ),
+  );
+}
+
 function sectorColor(name: string): string {
-  if (name.includes("AI") || name.includes("반도체")) return "#2f6f4e";
-  if (name.includes("금융")) return "#d8a24f";
-  if (name.includes("헬스케어")) return "#5f8b7a";
-  if (name.includes("소비")) return "#c8923d";
-  if (name.includes("에너지")) return "#8a7a5a";
-  if (name.includes("산업")) return "#6a7a8a";
-  if (name.includes("자동차")) return "#4a6a7a";
-  if (name.includes("통신")) return "#7a8a7a";
-  return "#9a8a7a";
+  if (name.includes("AI") || name.includes("반도체")) return "#059669";
+  if (name.includes("금융")) return "#d97706";
+  if (name.includes("헬스케어")) return "#0d9488";
+  if (name.includes("소비") || name.includes("통신")) return "#b45309";
+  if (name.includes("에너지")) return "#78716c";
+  if (name.includes("산업") || name.includes("자동차")) return "#475569";
+  return "#a8a29e";
 }
 
 function regionColor(name: string): string {
-  if (name === "북미") return "#2f6f4e";
-  if (name === "아시아") return "#d8a24f";
-  if (name === "유럽") return "#5f8b7a";
-  if (name === "중동") return "#c8923d";
-  if (name === "오세아니아") return "#6a7a8a";
-  if (name === "남미") return "#8a7a5a";
-  return "#9a8a7a";
+  if (name === "북미") return "#059669";
+  if (name === "아시아") return "#d97706";
+  if (name === "유럽") return "#0d9488";
+  if (name === "중동") return "#b45309";
+  if (name === "오세아니아") return "#475569";
+  if (name === "남미") return "#78716c";
+  return "#a8a29e";
 }
