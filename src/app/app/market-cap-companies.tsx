@@ -7,6 +7,7 @@ import {
   Factory,
   Globe2,
   Layers3,
+  Scale,
   Search,
   ShieldCheck,
   TrendingUp,
@@ -19,6 +20,7 @@ import {
   marketCapSource,
   type MarketCapCompany,
 } from "@/lib/market-cap-companies";
+import { CompanyCompareButton, CompanyComparePanel } from "./company-compare";
 
 const allOption = "전체";
 
@@ -27,6 +29,8 @@ export function MarketCapCompaniesPanel() {
   const [sector, setSector] = useState(allOption);
   const [region, setRegion] = useState(allOption);
   const [selectedTicker, setSelectedTicker] = useState(marketCapCompanies[0]?.ticker ?? "");
+  const [compareMode, setCompareMode] = useState(false);
+  const [compareList, setCompareList] = useState<string[]>([]);
   const analysisPanelRef = useRef<HTMLElement>(null);
 
   const selectedCompany =
@@ -65,6 +69,14 @@ export function MarketCapCompaniesPanel() {
   const topRegion = getTopCount(marketCapCompanies.map((company) => company.region));
 
   const selectCompany = (ticker: string, scrollToAnalysis = false) => {
+    if (compareMode) {
+      setCompareList((prev) => {
+        if (prev.includes(ticker)) return prev.filter((t) => t !== ticker);
+        if (prev.length >= 2) return [prev[1], ticker];
+        return [...prev, ticker];
+      });
+      return;
+    }
     setSelectedTicker(ticker);
 
     if (scrollToAnalysis) {
@@ -206,9 +218,9 @@ export function MarketCapCompaniesPanel() {
 
           <div className="min-w-0">
             <div className="border border-[#ded8ca] bg-white p-4 shadow-sm sm:p-5">
-              <div className="grid gap-3 lg:grid-cols-[1fr_180px_160px]">
-                <label className="relative block">
-                  <span className="sr-only">기업 검색</span>
+              <div className="grid gap-3 lg:grid-cols-[1fr_180px_160px_auto]">
+                  <label className="relative block">
+                    <span className="sr-only">기업 검색</span>
                   <Search
                     className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#8a8f84]"
                     aria-hidden="true"
@@ -248,6 +260,15 @@ export function MarketCapCompaniesPanel() {
                     </option>
                   ))}
                 </select>
+
+                <CompanyCompareButton
+                  compareMode={compareMode}
+                  onToggle={() => {
+                    setCompareMode(!compareMode);
+                    if (!compareMode) setCompareList([]);
+                  }}
+                  compareCount={compareList.length}
+                />
               </div>
 
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[#ebe5d8] pt-4">
@@ -260,6 +281,19 @@ export function MarketCapCompaniesPanel() {
                 </p>
               </div>
             </div>
+
+            {compareMode && (
+              <div className="mt-4">
+                <CompanyComparePanel
+                  companies={compareList
+                    .map((t) => marketCapCompanies.find((c) => c.ticker === t))
+                    .filter(Boolean) as MarketCapCompany[]}
+                  onRemove={(ticker) =>
+                    setCompareList((prev) => prev.filter((t) => t !== ticker))
+                  }
+                />
+              </div>
+            )}
 
             <div className="mt-4 hidden overflow-hidden border border-[#ded8ca] bg-white shadow-sm md:block">
               <table className="w-full min-w-[980px] border-collapse text-left">
