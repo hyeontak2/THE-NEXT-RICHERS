@@ -116,24 +116,38 @@ export default function RichersAppPage() {
               hint="전체 TOP 100 시총 기준"
             >
               <DonutChart data={sectorStats} total={totalTop100Cap} />
-              <div className="space-y-2">
-                {sectorStats.slice(0, 6).map((s) => {
-                  const pct = ((s.cap / totalTop100Cap) * 100);
-                  return (
-                    <div key={s.name}>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="font-medium text-[#111411]">{s.name}</span>
-                        <span className="font-semibold text-[#111411]">{pct.toFixed(1)}%</span>
+                <div className="space-y-2.5">
+                  {sectorStats.slice(0, 6).map((s) => {
+                    const pct = ((s.cap / totalTop100Cap) * 100);
+                    const baseColor = sectorColor(s.name);
+                    return (
+                      <div key={s.name}>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="font-medium text-[#111411]">{s.name}</span>
+                          <span className="font-semibold text-[#111411] tabular-nums">{pct.toFixed(1)}%</span>
+                        </div>
+                        <div className="group/progress-bar relative mt-1.5 h-3 w-full overflow-hidden rounded-full bg-gradient-to-r from-[#f0ebe1] to-[#e8e1d3] p-[1.5px] shadow-inner">
+                          {/* Glass shine overlay on hover */}
+                          <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-full opacity-0 transition-opacity duration-500 group-hover/progress-bar:opacity-100">
+                            <div className="absolute -inset-4 animate-shimmer" />
+                          </div>
+                          <div
+                            className="relative h-full rounded-full transition-all duration-1000 ease-out"
+                            style={{
+                              width: `${pct}%`,
+                              background: `linear-gradient(135deg, ${lighten(baseColor, 25)}, ${baseColor} 60%, ${darken(baseColor, 8)} 100%)`,
+                              boxShadow: `inset 0 1px 0 rgba(255,255,255,0.35), 0 1px 3px rgba(0,0,0,0.12)`,
+                            }}
+                          >
+                            {/* Glass shine dot */}
+                            <div
+                              className="absolute right-1 top-0.5 size-2 rounded-full bg-white/20"
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-[#f0ebe1]">
-                        <div
-                          className="h-full rounded-full transition-all duration-500"
-                          style={{ width: `${pct}%`, backgroundColor: sectorColor(s.name) }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
                 {sectorStats.length > 6 && (
                   <div className="text-xs text-[#73786f]">
                     +{sectorStats.length - 6}개 소규모 섹터
@@ -148,24 +162,38 @@ export default function RichersAppPage() {
               hint="전체 TOP 100 시총 기준"
             >
               <DonutChart data={regionStats} total={totalTop100Cap} />
-              <div className="space-y-2">
-                {regionStats.map((r) => {
-                  const pct = ((r.cap / totalTop100Cap) * 100);
-                  return (
-                    <div key={r.name}>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="font-medium text-[#111411]">{r.name}</span>
-                        <span className="font-semibold text-[#111411]">{pct.toFixed(1)}%</span>
+                <div className="space-y-2.5">
+                  {regionStats.map((r) => {
+                    const pct = ((r.cap / totalTop100Cap) * 100);
+                    const baseColor = regionColor(r.name);
+                    return (
+                      <div key={r.name}>
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="font-medium text-[#111411]">{r.name}</span>
+                          <span className="font-semibold text-[#111411] tabular-nums">{pct.toFixed(1)}%</span>
+                        </div>
+                        <div className="group/progress-bar relative mt-1.5 h-3 w-full overflow-hidden rounded-full bg-gradient-to-r from-[#f0ebe1] to-[#e8e1d3] p-[1.5px] shadow-inner">
+                          {/* Glass shine overlay on hover */}
+                          <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-full opacity-0 transition-opacity duration-500 group-hover/progress-bar:opacity-100">
+                            <div className="absolute -inset-4 animate-shimmer" />
+                          </div>
+                          <div
+                            className="relative h-full rounded-full transition-all duration-1000 ease-out"
+                            style={{
+                              width: `${pct}%`,
+                              background: `linear-gradient(135deg, ${lighten(baseColor, 25)}, ${baseColor} 60%, ${darken(baseColor, 8)} 100%)`,
+                              boxShadow: `inset 0 1px 0 rgba(255,255,255,0.35), 0 1px 3px rgba(0,0,0,0.12)`,
+                            }}
+                          >
+                            {/* Glass shine dot */}
+                            <div
+                              className="absolute right-1 top-0.5 size-2 rounded-full bg-white/20"
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-[#f0ebe1]">
-                        <div
-                          className="h-full rounded-full transition-all duration-500"
-                          style={{ width: `${pct}%`, backgroundColor: regionColor(r.name) }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </ChartCard>
           </div>
@@ -320,12 +348,15 @@ function MetricCard({
   sub: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-[#ded8ca] bg-white p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 sm:p-6">
-      <div className="absolute -right-6 -top-6 size-24 rounded-full bg-gradient-to-br from-white/0 to-[#f7f6f1] opacity-0 transition-opacity group-hover:opacity-100" />
-      <div className="relative">
+    <div className="group relative overflow-hidden rounded-xl border border-[#ded8ca] bg-white/95 p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.04),0_1px_2px_-1px_rgba(0,0,0,0.06)] transition-all duration-500 hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.15),0_4px_18px_0_rgba(0,0,0,0.06)] hover:-translate-y-1 sm:p-6">
+      {/* Premium shimmer overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/0 to-[#f7f6f1]/50 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+      {/* Top accent line */}
+      <div className="absolute inset-x-6 -top-px h-[2px] bg-gradient-to-r from-transparent via-[#d8a24f]/40 to-transparent opacity-0 transition-all duration-700 group-hover:opacity-100" />
+      <div className="relative z-10">
         <div className="flex items-start justify-between">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#9a6a20]">{label}</p>
-          <span className={`grid size-8 place-items-center rounded-lg ${iconBg}`}>
+          <p className="text-[11px] font-bold uppercase tracking-[0.06em] text-[#a8a29e]">{label}</p>
+          <span className={`grid size-9 place-items-center rounded-[10px] transition-all duration-500 group-hover:scale-110 group-hover:shadow-md ${iconBg}`}>
             <Icon className="size-4" aria-hidden="true" />
           </span>
         </div>
@@ -348,20 +379,28 @@ function ChartCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-[#ded8ca] bg-white p-5 shadow-sm sm:p-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="grid size-8 place-items-center rounded-lg bg-[#f7f6f1] text-[#9a6a20]">
-            <Icon className="size-4" />
-          </span>
-          <p className="text-sm font-semibold uppercase tracking-normal text-[#9a6a20]">
-            {title}
-          </p>
+    <div className="group relative overflow-hidden rounded-xl border border-[#ded8ca] bg-white/95 p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.04),0_1px_2px_-1px_rgba(0,0,0,0.06)] transition-all duration-500 hover:shadow-[0_10px_40px_-12px_rgba(0,0,0,0.18),0_4px_18px_0_rgba(0,0,0,0.06)] hover:-translate-y-1 sm:p-6">
+      {/* Premium top accent gradient line */}
+      <div className="absolute inset-x-0 -top-px mx-auto h-[2px] w-0 bg-gradient-to-r from-transparent via-[#d8a24f]/60 to-transparent opacity-0 transition-all duration-700 group-hover:w-3/4 group-hover:opacity-100" />
+      {/* Background shimmer on hover */}
+      <div className="absolute -inset-x-4 -inset-y-4 bg-gradient-to-br from-[#fffcf5]/0 via-[#fffcf5]/50 to-[#fffcf5]/0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+      <div className="relative z-10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="grid size-9 place-items-center rounded-[10px] bg-gradient-to-br from-[#f7f6f1] to-[#ede8dd] text-[#9a6a20] shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_1px_2px_rgba(0,0,0,0.05)] transition-transform duration-500 group-hover:scale-105">
+              <Icon className="size-4" />
+            </span>
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.05em] text-[#9a6a20]">
+                {title}
+              </p>
+            </div>
+          </div>
+          <span className="text-[11px] font-medium tracking-wide text-[#a8a29e]">{hint}</span>
         </div>
-        <span className="text-xs text-[#73786f]">{hint}</span>
-      </div>
-      <div className="mt-5 grid gap-6 sm:grid-cols-[180px_1fr] sm:items-start">
-        {children}
+        <div className="mt-5 grid gap-6 sm:grid-cols-[180px_1fr] sm:items-start">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -409,25 +448,33 @@ function DonutChart({
   const cy = size / 2;
   const outerR = size * 0.46;
   const innerR = size * 0.30;
+  const strokeW = 1.5; // white gap width between segments
+  const gapDeg = 3; // gap between segments for premium look
 
   // Build arcs
   const segments = data.map((d) => ({ name: d.name, pct: d.cap / total }));
   
-  // Combine small segments
+  // Combine small segments — keep "기타" off the main chart for clean look
   const maxSlices = 5;
   let displaySegs = segments.slice(0, maxSlices);
-  if (segments.length > maxSlices) {
-    const restPct = segments.slice(maxSlices).reduce((s, r) => s + r.pct, 0);
+  const restPct = segments.length > maxSlices
+    ? segments.slice(maxSlices).reduce((s, r) => s + r.pct, 0)
+    : 0;
+  if (segments.length > maxSlices && restPct > 0.005) {
     displaySegs.push({ name: "기타", pct: restPct });
   }
 
-  const arcs: Array<{ name: string; pct: number; path: string; color: string }> = [];
+  const arcs: Array<{
+    name: string; pct: number; path: string; gradId: string;
+    color: string; outerPct: number;
+  }> = [];
   let angle = -90;
 
   for (const seg of displaySegs) {
     if (seg.pct < 0.001) continue;
+    const effectivePct = seg.pct - gapDeg / 360;
     const startAng = angle;
-    const endAng = angle + seg.pct * 360;
+    const endAng = angle + effectivePct * 360;
     const startRad = (startAng * Math.PI) / 180;
     const endRad = (endAng * Math.PI) / 180;
 
@@ -436,13 +483,12 @@ function DonutChart({
     const x2 = cx + outerR * Math.cos(endRad);
     const y2 = cy + outerR * Math.sin(endRad);
 
-    // Inner circle points
     const ix1 = cx + innerR * Math.cos(endRad);
     const iy1 = cy + innerR * Math.sin(endRad);
     const ix2 = cx + innerR * Math.cos(startRad);
     const iy2 = cy + innerR * Math.sin(startRad);
 
-    const largeArc = seg.pct > 0.5 ? 1 : 0;
+    const largeArc = effectivePct > 0.5 ? 1 : 0;
 
     const path = [
       `M ${x1.toFixed(2)} ${y1.toFixed(2)}`,
@@ -452,19 +498,20 @@ function DonutChart({
       "Z",
     ].join(" ");
 
-    const color = isSectorData(data)
+    const baseColor = isSectorData(data)
       ? sectorColor(seg.name)
       : regionColor(seg.name);
+    const clean = seg.name.replace(/[^a-zA-Z0-9\uAC00-\uD7A3]/g, "");
+    const gradId = `dg-${clean}-${(seg.pct * 1000).toFixed(0)}`;
 
-    arcs.push({ name: seg.name, pct: seg.pct, path, color });
-    angle = endAng;
+    arcs.push({ name: seg.name, pct: seg.pct, path, gradId, color: baseColor, outerPct: effectivePct });
+    angle = endAng + gapDeg;
   }
 
-  const topLabel = data[0]
-    ? `${data[0].name?.slice(0, 4)}`
-    : "";
-  const topPct = data[0]
-    ? `${(data[0].cap / total * 100).toFixed(1)}%`
+  const topItem = data[0];
+  const topLabel = topItem ? `${topItem.name?.slice(0, 4)}` : "";
+  const topPct = topItem
+    ? `${(topItem.cap / total * 100).toFixed(1)}%`
     : "";
 
   return (
@@ -475,42 +522,101 @@ function DonutChart({
       className="shrink-0"
     >
       <defs>
+        {/* 3D-style gradients: darker at the bottom-right, lighter at top-left */}
         {arcs.map((arc) => (
-          <filter key={`shadow-${arc.name}`}>
-            <feDropShadow dx={0} dy={1} stdDeviation={1} floodOpacity={0.15} />
-          </filter>
+          <linearGradient key={arc.gradId} id={arc.gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor={lighten(arc.color, 25)} />
+            <stop offset="40%" stopColor={lighten(arc.color, 8)} />
+            <stop offset="100%" stopColor={darken(arc.color, 10)} />
+          </linearGradient>
         ))}
+        {/* Premium outer glow */}
+        <filter id="dg-glow">
+          <feDropShadow dx={0} dy={3} stdDeviation={4} floodColor="#000" floodOpacity={0.10} />
+        </filter>
+        {/* Inner cutout depth */}
+        <filter id="dg-inner">
+          <feDropShadow dx={0} dy={1} stdDeviation={2} floodColor="#000" floodOpacity={0.06} />
+        </filter>
       </defs>
-      {arcs.map((arc, i) => (
-        <path
-          key={arc.name}
-          d={arc.path}
-          fill={arc.color}
-          opacity={0.92}
-          className="transition-all hover:opacity-100"
-        />
+
+      {/* Background ring track */}
+      <circle
+        cx={cx} cy={cy} r={outerR + 1}
+        fill="none" stroke="#f0ebe1" strokeWidth={outerR - innerR + 2}
+        opacity={0.4}
+      />
+
+      {/* Arc segments with white stroke separation */}
+      {arcs.map((arc) => (
+        <g key={arc.name}>
+          {/* Subtle shadow under each segment */}
+          <path
+            d={arc.path}
+            fill="none"
+            stroke="rgba(0,0,0,0.04)"
+            strokeWidth={strokeW + 2}
+            transform={`translate(0, 1)`}
+          />
+          {/* Main segment fill */}
+          <path
+            d={arc.path}
+            fill={`url(#${arc.gradId})`}
+            filter="url(#dg-glow)"
+            className="transition-all duration-500 hover:brightness-110 hover:saturate-110"
+            style={{ transformOrigin: `${cx}px ${cy}px` }}
+          />
+          {/* White separation stroke */}
+          <path
+            d={arc.path}
+            fill="none"
+            stroke="white"
+            strokeWidth={strokeW}
+          />
+        </g>
       ))}
-      <circle cx={cx} cy={cy} r={innerR - 2} fill="#fff" />
+
+      {/* Inner cutout — subtle ring */}
+      <circle cx={cx} cy={cy} r={innerR - 1} fill="white" filter="url(#dg-inner)" />
+      <circle
+        cx={cx} cy={cy} r={innerR - 1}
+        fill="none" stroke="url(#dg-inner)"
+        strokeWidth={1} opacity={0.3}
+      />
+      {/* Inner border accent */}
+      <circle
+        cx={cx} cy={cy} r={innerR - 3}
+        fill="none" stroke="#e8e1d3" strokeWidth={1} opacity={0.5}
+      />
+
+      {/* Center labels */}
       <text
         x={cx}
-        y={cy - 5}
+        y={cy - 8}
         textAnchor="middle"
-        fontSize="12"
-        fontWeight="700"
+        fontSize="11"
+        fontWeight="800"
         fill="#111411"
+        letterSpacing="-0.3"
+        className="select-none"
       >
         {topLabel}
       </text>
       <text
         x={cx}
-        y={cy + 11}
+        y={cy + 13}
         textAnchor="middle"
-        fontSize="11"
-        fontWeight="600"
-        fill="#73786f"
+        fontSize="14"
+        fontWeight="700"
+        fill="#9a6a20"
+        letterSpacing="-0.3"
+        className="select-none"
       >
         {topPct}
       </text>
+
+      {/* Small decorative dot under percentage */}
+      <circle cx={cx} cy={cy + 20} r={1.5} fill="#d8a24f" opacity={0.4} />
     </svg>
   );
 }
@@ -523,22 +629,41 @@ function isSectorData(data: Array<{ name: string }>) {
   );
 }
 
+/** Lighten a hex color by a percentage (0-100) */
+function lighten(hex: string, amount: number): string {
+  const num = parseInt(hex.replace("#", ""), 16);
+  const r = Math.min(255, ((num >> 16) & 0xff) + Math.round(255 * amount / 100));
+  const g = Math.min(255, ((num >> 8) & 0xff) + Math.round(255 * amount / 100));
+  const b = Math.min(255, (num & 0xff) + Math.round(255 * amount / 100));
+  return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
+}
+
 function sectorColor(name: string): string {
+  if (name.includes("플랫폼") || name.includes("소프트웨어") || name.includes("통신")) return "#6366f1";
   if (name.includes("AI") || name.includes("반도체")) return "#059669";
   if (name.includes("금융")) return "#d97706";
-  if (name.includes("헬스케어")) return "#0d9488";
-  if (name.includes("소비") || name.includes("통신")) return "#b45309";
+  if (name.includes("헬스케어")) return "#0891b2";
+  if (name.includes("소비")) return "#ea580c";
   if (name.includes("에너지")) return "#78716c";
-  if (name.includes("산업") || name.includes("자동차")) return "#475569";
+  if (name.includes("산업") || name.includes("자동차")) return "#4f46e5";
   return "#a8a29e";
 }
 
 function regionColor(name: string): string {
-  if (name === "북미") return "#059669";
-  if (name === "아시아") return "#d97706";
-  if (name === "유럽") return "#0d9488";
-  if (name === "중동") return "#b45309";
-  if (name === "오세아니아") return "#475569";
-  if (name === "남미") return "#78716c";
+  if (name === "북미") return "#3b82f6";
+  if (name === "아시아") return "#f59e0b";
+  if (name === "유럽") return "#8b5cf6";
+  if (name === "중동") return "#ef4444";
+  if (name === "오세아니아") return "#14b8a6";
+  if (name === "남미") return "#f97316";
   return "#a8a29e";
+}
+
+/** Darken a hex color by a percentage (0-100) */
+function darken(hex: string, amount: number): string {
+  const num = parseInt(hex.replace("#", ""), 16);
+  const r = Math.max(0, ((num >> 16) & 0xff) - Math.round(255 * amount / 100));
+  const g = Math.max(0, ((num >> 8) & 0xff) - Math.round(255 * amount / 100));
+  const b = Math.max(0, (num & 0xff) - Math.round(255 * amount / 100));
+  return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, "0")}`;
 }

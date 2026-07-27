@@ -431,7 +431,7 @@ function CompanyRow({
           {company.driver}
         </p>
         <button
-          className="mt-2 inline-flex min-h-8 items-center rounded-[8px] border border-[#c8923d] bg-[#fff4d8] px-2.5 text-xs font-semibold text-[#111411] shadow-sm transition hover:bg-[#f3c56f]"
+          className="mt-2 inline-flex min-h-8 items-center rounded-[8px] border border-[#c8923d] bg-[#fff4d8] px-2.5 text-xs font-semibold text-[#111411] shadow-sm transition hover:bg-[#f3c56f] text-nowrap"
           type="button"
           onClick={onSelect}
         >
@@ -479,7 +479,7 @@ function CompanyMobileCard({
           </p>
           <p className="mt-2 text-sm leading-6 text-[#3f453d]">{company.driver}</p>
           <button
-            className="mt-3 inline-flex min-h-9 items-center gap-1.5 rounded-[8px] border border-[#c8923d] bg-[#fff4d8] px-3 text-xs font-semibold text-[#111411] shadow-sm transition hover:bg-[#f3c56f]"
+            className="mt-3 inline-flex min-h-9 items-center gap-1.5 rounded-[8px] border border-[#c8923d] bg-[#fff4d8] px-3 text-xs font-semibold text-[#111411] shadow-sm transition hover:bg-[#f3c56f] text-nowrap"
             type="button"
             onClick={onSelect}
           >
