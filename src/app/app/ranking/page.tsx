@@ -174,7 +174,7 @@ function MobileTopRicherList() {
               </span>
             </div>
             <Link
-              className="mt-3 inline-flex min-h-9 items-center gap-1.5 rounded-[8px] bg-white px-3 text-xs font-semibold text-[#111411]"
+              className="mt-3 inline-flex min-h-9 items-center gap-1.5 rounded-[8px] bg-white px-3 text-xs font-semibold text-[#111411] whitespace-nowrap"
               href={getTopRicherProfileHref(person)}
             >
               <LocalizedText token="common.viewAnalysis" fallback="분석 보기" />
@@ -239,7 +239,7 @@ function TopRicherRow({
       </td>
       <td className="px-4 py-3">
         <Link
-          className="inline-flex min-h-9 items-center gap-1.5 rounded-[8px] bg-white px-2.5 text-xs font-semibold text-[#111411] transition hover:bg-[#d8a24f]"
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-[8px] bg-white px-2.5 text-xs font-semibold text-[#111411] transition hover:bg-[#d8a24f] whitespace-nowrap"
           href={getTopRicherProfileHref(person)}
         >
           <LocalizedText token="common.viewAnalysis" fallback="분석 보기" />
