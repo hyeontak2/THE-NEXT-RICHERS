@@ -15,12 +15,12 @@ export const topRichersSource = {
   name: "Forbes 실시간 억만장자 순위",
   url: "https://www.forbes.com/real-time-billionaires/",
   publishedAt: "2026-03-10",
-  informationAsOf: "2026-07-21",
-  retrievedAt: "2026-07-21",
-  note: "Real-time Forbes data as of 2026-07-21. Stock prices fluctuate daily.",
+  informationAsOf: "2026-07-31",
+  retrievedAt: "2026-07-31",
+  note: "Real-time Forbes data as of 2026-07-31. Stock prices fluctuate daily.",
   stats: {
-    totalBillionaires: 3370,
-    totalNetWorthTrillion: 19.75,
+    totalBillionaires: 3373,
+    totalNetWorthTrillion: 19.73,
     increaseFrom2025: 400,
     unitedStatesBillionaires: 989,
     chinaIncludingHongKongBillionaires: 610,
@@ -352,8 +352,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 1,
     name: "Elon Musk",
-    netWorthBillion: 771.9,
-    netWorthLabel: "$771.9B",
+    netWorthBillion: 708.8,
+    netWorthLabel: "$708.8B",
     age: 55,
     country: "United States",
     category: "Technology",
@@ -363,8 +363,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 2,
     name: "Larry Page",
-    netWorthBillion: 288.4,
-    netWorthLabel: "$288.4B",
+    netWorthBillion: 274.3,
+    netWorthLabel: "$274.3B",
     age: 53,
     country: "United States",
     category: "Technology",
@@ -374,8 +374,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 3,
     name: "Sergey Brin",
-    netWorthBillion: 266.0,
-    netWorthLabel: "$266.0B",
+    netWorthBillion: 253.1,
+    netWorthLabel: "$253.1B",
     age: 53,
     country: "United States",
     category: "Technology",
@@ -385,8 +385,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 4,
     name: "Jeff Bezos",
-    netWorthBillion: 259.0,
-    netWorthLabel: "$259.0B",
+    netWorthBillion: 246.2,
+    netWorthLabel: "$246.2B",
     age: 62,
     country: "United States",
     category: "Technology",
@@ -395,19 +395,9 @@ export const topRichers: TopRicher[] = [
 
   {
     rank: 5,
-    name: "Mark Zuckerberg",
-    netWorthBillion: 221.5,
-    netWorthLabel: "$221.5B",
-    age: 42,
-    country: "United States",
-    category: "Technology",
-  },
-
-  {
-    rank: 6,
     name: "Michael Dell",
-    netWorthBillion: 220.1,
-    netWorthLabel: "$220.1B",
+    netWorthBillion: 228.8,
+    netWorthLabel: "$228.8B",
     age: 61,
     country: "United States",
     category: "Technology",
@@ -415,10 +405,20 @@ export const topRichers: TopRicher[] = [
   },
 
   {
+    rank: 6,
+    name: "Mark Zuckerberg",
+    netWorthBillion: 185.3,
+    netWorthLabel: "$185.3B",
+    age: 42,
+    country: "United States",
+    category: "Technology",
+  },
+
+  {
     rank: 7,
     name: "Jensen Huang",
-    netWorthBillion: 175.8,
-    netWorthLabel: "$175.8B",
+    netWorthBillion: 168.7,
+    netWorthLabel: "$168.7B",
     age: 63,
     country: "United States",
     category: "Technology",
@@ -428,8 +428,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 8,
     name: "Larry Ellison",
-    netWorthBillion: 161.1,
-    netWorthLabel: "$161.1B",
+    netWorthBillion: 164.9,
+    netWorthLabel: "$164.9B",
     age: 81,
     country: "United States",
     category: "Technology",
@@ -438,20 +438,9 @@ export const topRichers: TopRicher[] = [
 
   {
     rank: 9,
-    name: "Bernard Arnault & family",
-    netWorthBillion: 147.6,
-    netWorthLabel: "$147.6B",
-    age: 77,
-    country: "France",
-    category: "Fashion & Retail",
-    profileSlug: "bernard-arnault",
-  },
-
-  {
-    rank: 10,
     name: "Warren Buffett",
-    netWorthBillion: 139.4,
-    netWorthLabel: "$139.4B",
+    netWorthBillion: 144.8,
+    netWorthLabel: "$144.8B",
     age: 95,
     country: "United States",
     category: "Finance & Investments",
@@ -459,10 +448,21 @@ export const topRichers: TopRicher[] = [
   },
 
   {
+    rank: 10,
+    name: "Bernard Arnault & family",
+    netWorthBillion: 144.2,
+    netWorthLabel: "$144.2B",
+    age: 77,
+    country: "France",
+    category: "Fashion & Retail",
+    profileSlug: "bernard-arnault",
+  },
+
+  {
     rank: 11,
     name: "Amancio Ortega",
-    netWorthBillion: 136.9,
-    netWorthLabel: "$136.9B",
+    netWorthBillion: 144.1,
+    netWorthLabel: "$144.1B",
     age: 89,
     country: "Spain",
     category: "Fashion & Retail",
@@ -471,9 +471,19 @@ export const topRichers: TopRicher[] = [
 
   {
     rank: 12,
+    name: "Steve Ballmer",
+    netWorthBillion: 141.1,
+    netWorthLabel: "$141.1B",
+    age: 69,
+    country: "United States",
+    category: "Technology",
+  },
+
+  {
+    rank: 13,
     name: "Rob Walton & family",
-    netWorthBillion: 131.6,
-    netWorthLabel: "$131.6B",
+    netWorthBillion: 130.6,
+    netWorthLabel: "$130.6B",
     age: 81,
     country: "United States",
     category: "Fashion & Retail",
@@ -481,10 +491,10 @@ export const topRichers: TopRicher[] = [
   },
 
   {
-    rank: 13,
+    rank: 14,
     name: "Jim Walton & family",
-    netWorthBillion: 128.9,
-    netWorthLabel: "$128.9B",
+    netWorthBillion: 127.9,
+    netWorthLabel: "$127.9B",
     age: 77,
     country: "United States",
     category: "Fashion & Retail",
@@ -492,20 +502,10 @@ export const topRichers: TopRicher[] = [
   },
 
   {
-    rank: 14,
-    name: "Steve Ballmer",
-    netWorthBillion: 128.8,
-    netWorthLabel: "$128.8B",
-    age: 69,
-    country: "United States",
-    category: "Technology",
-  },
-
-  {
     rank: 15,
     name: "Carlos Slim Helu & family",
-    netWorthBillion: 125.0,
-    netWorthLabel: "$125.0B",
+    netWorthBillion: 125.2,
+    netWorthLabel: "$125.2B",
     age: 86,
     country: "Mexico",
     category: "Telecom",
@@ -515,8 +515,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 16,
     name: "Alice Walton",
-    netWorthBillion: 120.1,
-    netWorthLabel: "$120.1B",
+    netWorthBillion: 119.1,
+    netWorthLabel: "$119.1B",
     age: 76,
     country: "United States",
     category: "Fashion & Retail",
@@ -537,8 +537,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 18,
     name: "Changpeng Zhao",
-    netWorthBillion: 107.8,
-    netWorthLabel: "$107.8B",
+    netWorthBillion: 107.9,
+    netWorthLabel: "$107.9B",
     age: 49,
     country: "Canada",
     category: "Finance & Investments",
@@ -547,8 +547,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 19,
     name: "Bill Gates",
-    netWorthBillion: 106.1,
-    netWorthLabel: "$106.1B",
+    netWorthBillion: 106.8,
+    netWorthLabel: "$106.8B",
     age: 70,
     country: "United States",
     category: "Technology",
@@ -558,8 +558,8 @@ export const topRichers: TopRicher[] = [
   {
     rank: 20,
     name: "Thomas Peterffy",
-    netWorthBillion: 105.2,
-    netWorthLabel: "$105.2B",
+    netWorthBillion: 103.9,
+    netWorthLabel: "$103.9B",
     age: 81,
     country: "United States",
     category: "Finance & Investments",
@@ -747,7 +747,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "jacqueline-mars",
   },
   {
-    rank: 38,
+    rank: 39,
     name: "John Mars",
     netWorthBillion: 49.1,
     netWorthLabel: "$49.1B",
@@ -807,7 +807,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "gianluigi-aponte",
   },
   {
-    rank: 44,
+    rank: 45,
     name: "Rafaela Aponte-Diamant",
     netWorthBillion: 44.5,
     netWorthLabel: "$44.5B",
@@ -857,7 +857,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "alain-wertheimer",
   },
   {
-    rank: 49,
+    rank: 50,
     name: "Gerard Wertheimer",
     netWorthBillion: 39.4,
     netWorthLabel: "$39.4B",
@@ -897,7 +897,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "paolo-ardoino",
   },
   {
-    rank: 53,
+    rank: 54,
     name: "Jean-Louis van der Velde",
     netWorthBillion: 38,
     netWorthLabel: "$38B",
@@ -997,7 +997,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "he-xiangjian",
   },
   {
-    rank: 63,
+    rank: 64,
     name: "Abigail Johnson",
     netWorthBillion: 33.2,
     netWorthLabel: "$33.2B",
@@ -1007,7 +1007,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "abigail-johnson",
   },
   {
-    rank: 63,
+    rank: 65,
     name: "Zheng Shuliang & family",
     netWorthBillion: 33.2,
     netWorthLabel: "$33.2B",
@@ -1047,7 +1047,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "phil-knight",
   },
   {
-    rank: 68,
+    rank: 69,
     name: "Michal Strnad",
     netWorthBillion: 31.1,
     netWorthLabel: "$31.1B",
@@ -1077,7 +1077,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "elaine-marshall",
   },
   {
-    rank: 71,
+    rank: 72,
     name: "Shiv Nadar",
     netWorthBillion: 30.9,
     netWorthLabel: "$30.9B",
@@ -1117,7 +1117,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "stefan-quandt",
   },
   {
-    rank: 75,
+    rank: 76,
     name: "Reinhold Wuerth & family",
     netWorthBillion: 30.1,
     netWorthLabel: "$30.1B",
@@ -1157,7 +1157,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "susanne-klatten",
   },
   {
-    rank: 79,
+    rank: 80,
     name: "Vladimir Potanin",
     netWorthBillion: 29.7,
     netWorthLabel: "$29.7B",
@@ -1177,7 +1177,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "vagit-alekperov",
   },
   {
-    rank: 81,
+    rank: 82,
     name: "François Pinault & family",
     netWorthBillion: 29.5,
     netWorthLabel: "$29.5B",
@@ -1207,7 +1207,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "prajogo-pangestu",
   },
   {
-    rank: 84,
+    rank: 85,
     name: "MacKenzie Scott",
     netWorthBillion: 28.6,
     netWorthLabel: "$28.6B",
@@ -1247,7 +1247,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "emmanuel-besnier",
   },
   {
-    rank: 88,
+    rank: 89,
     name: "Leonid Mikhelson & family",
     netWorthBillion: 28.3,
     netWorthLabel: "$28.3B",
@@ -1267,7 +1267,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "daniel-gilbert",
   },
   {
-    rank: 90,
+    rank: 91,
     name: "Lei Jun",
     netWorthBillion: 27.9,
     netWorthLabel: "$27.9B",
@@ -1277,7 +1277,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "lei-jun",
   },
   {
-    rank: 90,
+    rank: 92,
     name: "Andreas von Bechtolsheim & family",
     netWorthBillion: 27.9,
     netWorthLabel: "$27.9B",
@@ -1317,7 +1317,7 @@ export const topRichers: TopRicher[] = [
     profileSlug: "jay-y-lee",
   },
   {
-    rank: 95,
+    rank: 96,
     name: "Cyrus Poonawalla",
     netWorthBillion: 27,
     netWorthLabel: "$27B",
