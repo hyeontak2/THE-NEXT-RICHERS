@@ -15,7 +15,7 @@ export type MarketCapCompany = {
 export const marketCapSource = {
   name: "CompaniesMarketCap",
   url: "https://companiesmarketcap.com/",
-  checkedAt: "2026-10-02",
+  checkedAt: "2026-10-03",
   totalMarketCap: "$152.636 T",
 };
 
@@ -1321,6 +1321,7 @@ export const marketCapCompanies: MarketCapCompany[] = [
     watch: "금리 민감도와 캐나다 주택시장 위험, 미국 소매 확장 성과를 봐야 합니다.",
   }
 ];
+
 
 
 
