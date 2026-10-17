@@ -15,7 +15,7 @@ export type MarketCapCompany = {
 export const marketCapSource = {
   name: "CompaniesMarketCap",
   url: "https://companiesmarketcap.com/",
-  checkedAt: "2026-10-17",
+  checkedAt: "2026-10-16",
   totalMarketCap: "$150.526 T",
 };
 
@@ -1321,7 +1321,6 @@ export const marketCapCompanies: MarketCapCompany[] = [
     watch: "기업용 SSD(eSSD) 가격·낸드 공급과 AI 서버 스토리지 투자 흐름을 봐야 합니다.",
   }
 ];
-
 
 
 
